@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import {
   Mail,
   Phone,
@@ -16,34 +16,53 @@ import {
 } from "lucide-react";
 import Footer from "@/components/Footer";
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState({
+// Define form data interface
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export default function ContactPage(): JSX.Element {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Simulate form submission - replace with actual API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       console.log("Form submitted:", formData);
       alert("Thank you for your message! We'll get back to you soon.");
       setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert(
+        "Sorry, there was an error sending your message. Please try again."
+      );
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -100,8 +119,8 @@ export default function ContactPage() {
                 Price Lesson
               </span>
               , we believe financial education should be simple, practical, and
-              accessible to everyone. Let's connect and build your financial
-              freedom together!
+              accessible to everyone. Let&apos;s connect and build your
+              financial freedom together!
             </p>
           </div>
 
@@ -122,7 +141,7 @@ export default function ContactPage() {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 min-w-[2.5rem] min-h-[2.5rem] flex-shrink-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-1">
                         Email Support
                       </h3>
@@ -131,8 +150,8 @@ export default function ContactPage() {
                         journey?
                       </p>
                       <a
-                        href="mailto:support@pricelesson.com"
-                        className="text-orange-400 hover:text-orange-300 transition-colors text-sm sm:text-base"
+                        href="mailto:contact@pricelesson.in"
+                        className="text-orange-400 hover:text-orange-300 transition-colors text-sm sm:text-base break-all"
                       >
                         contact@pricelesson.in
                       </a>
@@ -144,7 +163,7 @@ export default function ContactPage() {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 min-w-[2.5rem] min-h-[2.5rem] flex-shrink-0 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-1">
                         Call / WhatsApp
                       </h3>
@@ -152,8 +171,7 @@ export default function ContactPage() {
                         Prefer speaking directly?
                       </p>
                       <a
-                        href="tel:+91-8578064265
-"
+                        href="tel:+91-8578064265"
                         className="text-green-400 hover:text-green-300 transition-colors text-sm sm:text-base"
                       >
                         +91-8578064265
@@ -166,7 +184,7 @@ export default function ContactPage() {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 min-w-[2.5rem] min-h-[2.5rem] flex-shrink-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-1">
                         Support Hours
                       </h3>
@@ -184,7 +202,7 @@ export default function ContactPage() {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 min-w-[2.5rem] min-h-[2.5rem] flex-shrink-0 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-1">
                         Head Office
                       </h3>
@@ -204,22 +222,22 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8 ">
-              <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 ">
+            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8">
+              <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
                   <Send className="w-4 h-4 text-white" />
                 </div>
                 Send Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label
                       htmlFor="name"
                       className="block text-white/80 font-medium mb-2"
                     >
-                      Full Name
+                      Full Name *
                     </label>
                     <div className="relative">
                       <User className="absolute left-4 top-4 w-5 h-5 text-white/40" />
@@ -232,6 +250,7 @@ export default function ContactPage() {
                         required
                         className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
                         placeholder="Enter your name"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -241,7 +260,7 @@ export default function ContactPage() {
                       htmlFor="email"
                       className="block text-white/80 font-medium mb-2"
                     >
-                      Email Address
+                      Email Address *
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-4 w-5 h-5 text-white/40" />
@@ -254,6 +273,7 @@ export default function ContactPage() {
                         required
                         className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                         placeholder="Enter your email"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -264,7 +284,7 @@ export default function ContactPage() {
                     htmlFor="subject"
                     className="block text-white/80 font-medium mb-2"
                   >
-                    Subject
+                    Subject *
                   </label>
                   <input
                     type="text"
@@ -275,6 +295,7 @@ export default function ContactPage() {
                     required
                     className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="What's this about?"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -283,7 +304,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-white/80 font-medium mb-2"
                   >
-                    Message
+                    Message *
                   </label>
                   <textarea
                     id="message"
@@ -294,13 +315,14 @@ export default function ContactPage() {
                     rows={6}
                     className="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us how we can help you..."
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-orange-500 via-green-500 to-blue-500 text-white font-bold py-4 px-8 rounded-xl hover:from-orange-600 hover:via-green-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-orange-500 via-green-500 to-blue-500 text-white font-bold py-4 px-8 rounded-xl hover:from-orange-600 hover:via-green-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:hover:scale-100"
                 >
                   <Send
                     className={`w-5 h-5 ${isSubmitting ? "animate-spin" : ""}`}
@@ -384,14 +406,14 @@ export default function ContactPage() {
 
                 {/* Subheading */}
                 <p className="text-lg md:text-xl text-gray-300 mb-10">
-                  Your financial freedom starts with the right education. Let's
-                  build it together!
+                  Your financial freedom starts with the right education.
+                  Let&apos;s build it together!
                 </p>
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
-                    href="mailto:support@pricelesson.com"
+                    href="mailto:contact@pricelesson.in"
                     className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-md hover:shadow-orange-500/40 hover:-translate-y-1"
                   >
                     <Mail className="h-5 w-5" />
@@ -399,7 +421,7 @@ export default function ContactPage() {
                   </a>
 
                   <a
-                    href="https://wa.me/91XXXXXXXXXX"
+                    href="https://wa.me/918578064265"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-md hover:shadow-green-500/40 hover:-translate-y-1"
