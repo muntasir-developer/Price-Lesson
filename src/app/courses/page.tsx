@@ -115,7 +115,7 @@ export default function TradingCourseLanding() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const formatText = (text) => {
+  const formatText = (text: string): string => {
     return text.replace(
       /\*\*(.*?)\*\*/g,
       '<strong class="text-green-600 font-semibold">$1</strong>'
