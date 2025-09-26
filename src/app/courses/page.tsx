@@ -33,7 +33,8 @@ import WhatsAppFloating from "@/components/WhatsApp";
 export default function TradingCourseLanding() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const year = new Date().getFullYear();
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   const router = useRouter();
 
   const [showBar, setShowBar] = useState(false);
@@ -110,7 +111,7 @@ export default function TradingCourseLanding() {
     },
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
