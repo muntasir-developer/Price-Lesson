@@ -148,12 +148,6 @@ export default function TradingCourseLanding() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
-
   return (
     <div className="min-h-screen bg-white text-gray-900 relative overflow-hidden">
       {/* Grid Background */}
