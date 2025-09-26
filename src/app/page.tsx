@@ -7,7 +7,7 @@ import SmallSuccessSection from "@/components/SmallSucess";
 import SnakeRoadFuturistic from "@/components/Tesimonial";
 import VisionMissionSection from "@/components/Vision";
 import React, { useState, useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import WhatsAppFloating from "@/components/WhatsApp";
 
 const Hero = () => {
