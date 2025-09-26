@@ -1,103 +1,237 @@
-import Image from "next/image";
+"use client";
+import StockMarketCourseSection from "@/components/Course";
+import FAQSection from "@/components/Faq";
+import Footer from "@/components/Footer";
+import PainfulJourney from "@/components/PainFul";
+import SmallSuccessSection from "@/components/SmallSucess";
+import SnakeRoadFuturistic from "@/components/Tesimonial";
+import VisionMissionSection from "@/components/Vision";
+import React, { useState, useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
+import WhatsAppFloating from "@/components/WhatsApp";
 
-export default function Home() {
+const Hero = () => {
+  const images = [
+    "/image/banner1.jpg",
+    "/image/banner2.jpg",
+    "/image/banner3.jpg",
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  /* ---------------- Background Slider ---------------- */
+  useEffect(() => {
+    const interval = setInterval(
+      () => setCurrent((prev) => (prev + 1) % images.length),
+      5000
+    );
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  /* ---------------- Timer Logic ---------------- */
+  const [timeLeft, setTimeLeft] = useState({
+    days: 3,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const target = new Date();
+    target.setDate(target.getDate() + 3);
+
+    const updateTimer = () => {
+      const now = new Date();
+      const diff = target.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  /* ---------------- Lenis Smooth Scrolling ---------------- */
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <>
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        {/* ---------- Background Slider ---------- */}
+        <div className="absolute inset-0">
+          {images.map((img, i) => (
+            <div
+              key={i}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-out ${
+                i === current ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ backgroundImage: `url(${img})` }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          ))}
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-purple-500/30 to-pink-400/30 animate-[gradientShift_18s_linear_infinite] mix-blend-overlay" />
+
+          {/* Futuristic Floating Particles */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(14)].map((_, i) => {
+              const size = Math.random() > 0.6 ? 4 : 2;
+              return (
+                <div
+                  key={i}
+                  className="absolute rounded-full animate-float-glow twinkle"
+                  style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 10}s`,
+                    background:
+                      "radial-gradient(circle, rgba(0,255,255,0.8) 0%, rgba(0,255,255,0) 70%)",
+                    boxShadow: "0 0 6px #0ff, 0 0 12px #0ff",
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* ---------- Timer Section ---------- */}
+        <div className="absolute bottom-6 w-full flex flex-col items-center z-30 px-2">
+          {/* Text Above Timer */}
+          <p className="mb-1 text-sm sm:text-base md:text-lg font-medium text-cyan-200 drop-shadow-lg">
+            Exclusive 50% Discount
+          </p>
+
+          {/* Timer Cards */}
+          <div className="flex gap-1.5 sm:gap-2 md:gap-3">
+            {[
+              { label: "Days", value: timeLeft.days },
+              { label: "Hours", value: timeLeft.hours },
+              { label: "Minutes", value: timeLeft.minutes },
+              { label: "Seconds", value: timeLeft.seconds },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="relative w-10 sm:w-14 md:w-16 px-1 py-1 sm:px-1.5 sm:py-1.5 md:px-2 md:py-2 rounded-md sm:rounded-lg text-center backdrop-blur-xl bg-white/10 overflow-hidden"
+              >
+                {/* Animated Border */}
+                <span className="absolute inset-0 rounded-md sm:rounded-lg p-[1px] animate-border-snake bg-[length:200%_200%] bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500" />
+                <div className="relative z-10">
+                  <p className="text-xs sm:text-base md:text-lg font-bold text-cyan-200 leading-tight">
+                    {item.value.toString().padStart(2, "0")}
+                  </p>
+                  <p className="text-[7px] sm:text-[9px] md:text-xs text-cyan-100 opacity-80">
+                    {item.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ---------- Animations ---------- */}
+        <style jsx>{`
+          @keyframes float-glow {
+            0% {
+              transform: translateY(0px) scale(1);
+              opacity: 0.6;
+            }
+            50% {
+              transform: translateY(-15px) scale(1.2);
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(0px) scale(1);
+              opacity: 0.6;
+            }
+          }
+          @keyframes twinkle {
+            0%,
+            100% {
+              opacity: 0.6;
+            }
+            50% {
+              opacity: 1;
+            }
+          }
+          @keyframes gradientShift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          @keyframes border-snake {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          .twinkle {
+            animation: twinkle 4s infinite ease-in-out alternate;
+          }
+          .animate-float-glow {
+            animation: float-glow 12s ease-in-out infinite;
+          }
+          .animate-border-snake {
+            animation: border-snake 4s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+          }
+        `}</style>
+      </section>
+
+      {/* Other Sections */}
+      <PainfulJourney />
+      <SmallSuccessSection />
+      <VisionMissionSection />
+      <StockMarketCourseSection />
+      <FAQSection />
+      <SnakeRoadFuturistic />
+      <Footer />
+      <WhatsAppFloating />
+    </>
   );
-}
+};
+
+export default Hero;
