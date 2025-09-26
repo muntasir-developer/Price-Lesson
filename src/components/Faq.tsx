@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, MouseEvent } from "react";
 import {
   ChevronDown,
   ChevronUp,
@@ -7,11 +9,25 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const FAQSection = () => {
-  const [openFAQ, setOpenFAQ] = useState(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+interface MousePosition {
+  x: number;
+  y: number;
+}
 
-  const handleMouseMove = (e) => {
+interface FAQ {
+  question: string;
+  answer: string;
+  icon: string;
+}
+
+const FAQSection: React.FC = () => {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
+
+  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
@@ -19,7 +35,7 @@ const FAQSection = () => {
     });
   };
 
-  const faqs = [
+  const faqs: FAQ[] = [
     {
       question: "Do I need prior knowledge to join?",
       answer:
@@ -45,8 +61,20 @@ const FAQSection = () => {
     },
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number): void => {
     setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const handleFAQHover = (e: MouseEvent<HTMLDivElement>): void => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const sectionElement = e.currentTarget.closest("section");
+    if (sectionElement) {
+      const parentRect = sectionElement.getBoundingClientRect();
+      setMousePosition({
+        x: rect.left + rect.width / 2 - parentRect.left,
+        y: rect.top + rect.height / 2 - parentRect.top,
+      });
+    }
   };
 
   return (
@@ -127,16 +155,7 @@ const FAQSection = () => {
             <div
               key={index}
               className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl sm:rounded-2xl hover:border-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10"
-              onMouseEnter={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const parentRect = e.currentTarget
-                  .closest("section")
-                  .getBoundingClientRect();
-                setMousePosition({
-                  x: rect.left + rect.width / 2 - parentRect.left,
-                  y: rect.top + rect.height / 2 - parentRect.top,
-                });
-              }}
+              onMouseEnter={handleFAQHover}
             >
               {/* Individual spotlight for each FAQ item */}
               <div
@@ -154,10 +173,15 @@ const FAQSection = () => {
               <button
                 onClick={() => toggleFAQ(index)}
                 className="relative w-full p-4 sm:p-6 text-left focus:outline-none focus:ring-2 focus:ring-orange-500/50 rounded-xl sm:rounded-2xl"
+                aria-expanded={openFAQ === index}
+                aria-controls={`faq-answer-${index}`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
-                    <span className="text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0">
+                    <span
+                      className="text-lg sm:text-2xl mt-0.5 sm:mt-1 flex-shrink-0"
+                      aria-hidden="true"
+                    >
                       {faq.icon}
                     </span>
                     <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white group-hover:text-orange-300 transition-colors duration-300 leading-snug">
@@ -167,15 +191,22 @@ const FAQSection = () => {
 
                   <div className="ml-3 sm:ml-4 flex-shrink-0">
                     {openFAQ === index ? (
-                      <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 transition-transform duration-300" />
+                      <ChevronUp
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 transition-transform duration-300"
+                        aria-hidden="true"
+                      />
                     ) : (
-                      <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-orange-400 transition-all duration-300" />
+                      <ChevronDown
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-orange-400 transition-all duration-300"
+                        aria-hidden="true"
+                      />
                     )}
                   </div>
                 </div>
 
                 {/* Answer */}
                 <div
+                  id={`faq-answer-${index}`}
                   className={`overflow-hidden transition-all duration-500 ease-in-out ${
                     openFAQ === index ? "max-h-96 mt-3 sm:mt-4" : "max-h-0"
                   }`}
@@ -196,7 +227,9 @@ const FAQSection = () => {
         <div className="text-center px-4 sm:px-0">
           <div className="inline-block p-6 sm:p-8 bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl sm:rounded-3xl w-full max-w-md sm:max-w-none sm:w-auto">
             <div className="mb-3 sm:mb-4">
-              <span className="text-xl sm:text-2xl">✨</span>
+              <span className="text-xl sm:text-2xl" aria-hidden="true">
+                ✨
+              </span>
             </div>
 
             <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg">
@@ -204,12 +237,18 @@ const FAQSection = () => {
             </p>
 
             <div className="flex flex-col gap-3 sm:gap-4 justify-center items-stretch sm:flex-row sm:items-center">
-              <button className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-600 to-green-600 text-white font-semibold rounded-xl hover:from-blue-500 hover:to-green-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 flex items-center justify-center gap-2 text-sm sm:text-base">
+              <button
+                className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-600 to-green-600 text-white font-semibold rounded-xl hover:from-blue-500 hover:to-green-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 flex items-center justify-center gap-2 text-sm sm:text-base"
+                type="button"
+              >
                 <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span className="truncate">Visit Full FAQ Section</span>
               </button>
 
-              <button className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-sm sm:text-base">
+              <button
+                className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-sm sm:text-base"
+                type="button"
+              >
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-pulse" />
                 <span>Contact Us</span>
               </button>
