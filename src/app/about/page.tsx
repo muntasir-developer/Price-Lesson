@@ -26,7 +26,7 @@ const AboutPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const setVisible = (section) => {
+  const setVisible = (section: string) => {
     setIsVisible((prev) => ({ ...prev, [section]: true }));
   };
 
