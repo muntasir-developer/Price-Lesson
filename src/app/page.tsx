@@ -73,8 +73,8 @@ const Hero: React.FC = () => {
   /* ---------------- Lenis Smooth Scrolling ---------------- */
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true, // ✅ replaces smoothWheel & smoothTouch
+      duration: 1.2, // Scroll duration
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // Custom easing function
     });
 
     const raf = (time: number) => {
