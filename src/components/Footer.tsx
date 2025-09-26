@@ -13,6 +13,7 @@ import {
   Users,
   MessageCircle,
 } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -70,10 +71,11 @@ const Footer = () => {
               <h3 className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 flex items-center gap-2.5 to-orange-600 bg-clip-text text-transparent">
                 About{" "}
                 <div className="flex items-center">
-                  <img
-                    src="./image/logo.png" // replace with your logo path
+                  <Image
+                    src="/image/logo.png" // make sure it's in the public folder
                     alt="Price Lesson Logo"
-                    className="md:h-12 h-9 w-auto " // clean futuristic white glow
+                    width={128} // your logo width
+                    height={48} // your logo height
                   />
                 </div>
               </h3>

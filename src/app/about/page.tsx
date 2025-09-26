@@ -120,9 +120,11 @@ const AboutPage = () => {
             >
               <div className="mb-6 sm:mb-8">
                 <Star className="text-orange-400 w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 mx-auto mb-4 sm:mb-6 animate-spin" />
+
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold bg-gradient-to-r from-orange-400 via-blue-400 to-green-400 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight">
                   Our Story
                 </h1>
+
                 <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 font-light px-2">
                   Every big dream begins with{" "}
                   <span className="text-orange-400 font-bold">small wins</span>
@@ -134,7 +136,15 @@ const AboutPage = () => {
                   My journey in the stock market was full of struggles. I
                   wandered a lot while trying to learn finance and trading,
                   searching for guidance in a world that seemed designed to
-                  profit from my confusion.
+                  profit from my confusion. I&apos;ve faced challenges, made
+                  mistakes, and learned the hard way, but each step taught me
+                  something valuable.
+                </p>
+
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-100 mb-6 sm:mb-8">
+                  It&apos;s not just about making money—it&apos;s about
+                  understanding the process, building discipline, and
+                  celebrating the small wins along the way.
                 </p>
 
                 <ArrowDown className="w-6 sm:w-8 h-6 sm:h-8 mx-auto text-blue-400 animate-bounce" />
@@ -206,9 +216,10 @@ const AboutPage = () => {
                         The Dark Phase
                       </h4>
                       <p className="text-gray-400 italic text-sm sm:text-base">
-                        "Every loss felt like a step backward. Every expensive
-                        course felt like a luxury I couldn't afford. But
-                        something inside me refused to give up."
+                        &quot;Every loss felt like a step backward. Every
+                        expensive course felt like a luxury I couldn&apos;t
+                        afford. But something inside me refused to give
+                        up.&quot;
                       </p>
                     </div>
                   </div>
@@ -247,9 +258,9 @@ const AboutPage = () => {
                         First Profitable Trade
                       </h4>
                       <p className="text-gray-200 text-lg leading-relaxed">
-                        "After a long losing streak, I made my first profitable
-                        trade. The profit was small, but the confidence it gave
-                        me was priceless."
+                        &quot;After a long losing streak, I made my first
+                        profitable trade. The profit was small, but the
+                        confidence it gave me was priceless.&quot;
                       </p>
                     </div>
                   </div>
@@ -263,7 +274,8 @@ const AboutPage = () => {
                     </h3>
                     <div className="bg-gray-800/50 rounded-lg p-6 border-l-4 border-green-400 mb-4">
                       <p className="text-green-400 italic text-lg mb-2">
-                        "Bhai, your video helped me understand trading."
+                        &quot;Bhai, your video helped me understand
+                        trading.&quot;
                       </p>
                       <p className="text-gray-400 text-sm">
                         — A comment on my YouTube video
@@ -272,7 +284,7 @@ const AboutPage = () => {
                     <p className="text-gray-200 text-lg leading-relaxed">
                       That single line gave me more happiness than any profit.
                       It made me realize that my struggles could become someone
-                      else's{" "}
+                      else&apos;s{" "}
                       <strong className="text-green-400">
                         path to success
                       </strong>
@@ -286,7 +298,7 @@ const AboutPage = () => {
                       The Decision
                     </h3>
                     <p className="text-gray-200 text-lg leading-relaxed">
-                      That's when I decided to build{" "}
+                      That&apos;s when I decided to build{" "}
                       <strong className="text-orange-400">Price Lesson</strong>{" "}
                       — so no one else has to face the same challenges I did.
                       Every struggle had a purpose.
@@ -338,7 +350,7 @@ const AboutPage = () => {
                     Beyond Trading
                   </h3>
                   <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-                    We don't just teach trading. We teach how to{" "}
+                    We don&apos;t just teach trading. We teach how to{" "}
                     <strong>manage money wisely</strong> and build financial
                     discipline that lasts a lifetime.
                   </p>
@@ -395,7 +407,7 @@ const AboutPage = () => {
               <div className="max-w-4xl mx-auto text-center space-y-12">
                 <div className="bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-3xl p-12 border border-blue-500/30 backdrop-blur-lg">
                   <h3 className="text-4xl font-bold mb-8 text-white">
-                    India's youth deserve{" "}
+                    India&apos;s youth deserve{" "}
                     <span className="text-green-400">financial freedom</span>
                   </h3>
                   <p className="text-2xl leading-relaxed text-gray-200 mb-8">
@@ -407,8 +419,8 @@ const AboutPage = () => {
                     burden of loans and bad money decisions.
                   </p>
                   <p className="text-xl text-gray-300">
-                    We're not just building a platform. We're building a
-                    movement.
+                    We&apos;re not just building a platform. We&apos;re building
+                    a movement.
                   </p>
                 </div>
 
@@ -449,8 +461,8 @@ const AboutPage = () => {
                     At a time.
                   </p>
                   <p className="text-xl text-gray-200">
-                    This is how we change India's financial future — one success
-                    story at a time.
+                    This is how we change India&apos;s financial future — one
+                    success story at a time.
                   </p>
                 </div>
               </div>
@@ -471,11 +483,11 @@ const AboutPage = () => {
               <div className="text-center mb-20">
                 <Heart className="w-16 h-16 mx-auto mb-6 text-red-400 animate-pulse" />
                 <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-                  Why We're Different
+                  Why We&apos;re Different
                 </h2>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  Built from real struggles, for real people. This isn't just
-                  business — it's personal.
+                  Built from real struggles, for real people. This isn&apos;t
+                  just business — it&apos;s personal.
                 </p>
               </div>
 
@@ -544,8 +556,8 @@ const AboutPage = () => {
                     2,00,000+ Strong Community
                   </h3>
                   <p className="text-xl text-gray-200 mb-8">
-                    More than subscribers — we're a family that grows together
-                    toward financial independence.
+                    More than subscribers — we&apos;re a family that grows
+                    together toward financial independence.
                   </p>
 
                   <div className="flex items-center justify-center space-x-6 text-lg">
@@ -568,8 +580,8 @@ const AboutPage = () => {
               Your Financial Journey Starts Here
             </h3>
             <p className="text-xl text-gray-200 mb-10">
-              Join thousands who've already transformed their financial future
-              with Price Lesson
+              Join thousands who&apos;ve already transformed their financial
+              future with Price Lesson
             </p>
             <div className="space-y-4 sm:space-y-0 sm:space-x-6 sm:flex sm:justify-center">
               <button className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-2xl">

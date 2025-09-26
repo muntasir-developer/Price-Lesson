@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
   ChevronDown,
@@ -28,11 +28,9 @@ import {
   BookOpen,
   DollarSign,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import WhatsAppFloating from "@/components/WhatsApp";
 
 export default function TradingCourseLanding() {
-  const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const year = new Date().getFullYear();
   const [openIndex, setOpenIndex] = useState(null);
@@ -197,42 +195,42 @@ export default function TradingCourseLanding() {
           </div>
 
           {/* Navbar */}
-          <div className="w-full border-b border-gray-200 py-4 sm:py-5">
-            <div className="max-w-7xl flex justify-between items-center mx-auto px-2 sm:px-0">
-              {/* Logo */}
-              <a href="/" className="flex items-center space-x-2">
-                <img
-                  src="/image/logo.png"
-                  alt="Company Logo"
-                  className="h-8 sm:h-12 w-auto"
-                />
-              </a>
+          <div className="max-w-7xl flex justify-between items-center mx-auto px-2 pt-8 sm:px-0">
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-2">
+              <Image
+                src="/image/logo.png"
+                alt="Company Logo"
+                width={128} // specify your logo width
+                height={48} // specify your logo height
+                className="h-8 sm:h-12 w-auto"
+              />
+            </Link>
 
-              {/* CTA Button (Mobile: inline, Desktop: right side) */}
-              <a
-                href="https://pelglp.courses.store/691872"
-                className="absulote z-50 inline-flex sm:hidden 
-          bg-gradient-to-r from-emerald-500 to-blue-600
-          text-white px-4 py-2 rounded-full text-sm font-semibold 
-          shadow-md hover:scale-105 transition-all"
-              >
-                Get Started
-              </a>
+            {/* CTA Button (Mobile: inline, Desktop: right side) */}
+            <Link
+              href="https://pelglp.courses.store/691872"
+              className="absolute z-50 inline-flex sm:hidden 
+               bg-gradient-to-r from-emerald-500 to-blue-600
+               text-white px-4 py-2 rounded-full text-sm font-semibold 
+               shadow-md hover:scale-105 transition-all"
+            >
+              Get Started
+            </Link>
 
-              <a
-                href="https://pelglp.courses.store/691872"
-                className="hidden sm:inline-flex 
-          bg-gradient-to-r from-emerald-400/30 via-teal-400/30 to-blue-500/30
-          backdrop-blur-md border border-cyan-300/30 
-          text-white px-6 py-3 rounded-full text-base font-semibold 
-          transition-all duration-300 
-          hover:from-emerald-400/50 hover:via-teal-500/50 hover:to-blue-600/50 
-          hover:scale-105 
-          shadow-lg hover:shadow-[0_0_20px_rgba(34,197,94,0.5),0_0_30px_rgba(59,130,246,0.5)] relative z-50"
-              >
-                Get Started
-              </a>
-            </div>
+            <Link
+              href="https://pelglp.courses.store/691872"
+              className="hidden sm:inline-flex 
+               bg-gradient-to-r from-emerald-400/30 via-teal-400/30 to-blue-500/30
+               backdrop-blur-md border border-cyan-300/30 
+               text-white px-6 py-3 rounded-full text-base font-semibold 
+               transition-all duration-300 
+               hover:from-emerald-400/50 hover:via-teal-500/50 hover:to-blue-600/50 
+               hover:scale-105 
+               shadow-lg hover:shadow-[0_0_20px_rgba(34,197,94,0.5),0_0_30px_rgba(59,130,246,0.5)] relative z-50"
+            >
+              Get Started
+            </Link>
           </div>
 
           {/* Hero Content */}
@@ -1090,9 +1088,11 @@ export default function TradingCourseLanding() {
               {/* Mentor Image */}
               <div className="relative text-center lg:text-left">
                 <div className="relative w-80 h-[460px] mx-auto lg:mx-0 mb-8 overflow-hidden rounded-[50%_45%_55%_50%] shadow-[0_30px_80px_rgba(0,0,0,0.25)] ring-4 ring-emerald-200 bg-white transition-transform duration-500 hover:scale-105">
-                  <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&h=500&fit=crop&crop=face"
+                  <Image
+                    src="/monazir.png"
                     alt="Md Monazir"
+                    width={500} // original width
+                    height={500} // original height
                     className="w-full h-full object-cover filter brightness-95 contrast-105"
                   />
 
@@ -1493,7 +1493,7 @@ export default function TradingCourseLanding() {
                   </div>
 
                   {/* CTA Button */}
-                  <a
+                  <Link
                     href="https://pelglp.courses.store/691872"
                     className="relative inline-block px-6 py-3 font-bold text-white rounded-xl
                  bg-gradient-to-r from-emerald-600 to-blue-600
@@ -1502,7 +1502,7 @@ export default function TradingCourseLanding() {
                  transition-all duration-300"
                   >
                     Enroll Now – Start Your Trading Journey
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

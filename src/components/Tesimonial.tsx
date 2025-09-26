@@ -3,87 +3,84 @@ import { motion, animate, useMotionValue } from "framer-motion";
 import { useEffect, useRef } from "react";
 import "@fontsource/oswald";
 
-const FloatingGlassyCards3D = () => {
-  const PADDING = 20; // smaller padding for mobile
-  const CARD_WIDTH = 280;
-  const CARD_HEIGHT = 240;
+const PADDING = 20;
+const CARD_WIDTH = 280;
+const CARD_HEIGHT = 240;
 
-  const cards = [
-    {
-      title: "First Profitable Trade",
-      text: "Har struggle ke baad, chhoti si success bhi ek badi jeet lagti hai...",
-      color: "#22c55e",
-    },
-    {
-      title: "Subscriber Milestone",
-      text: "Phir ek din mere YouTube video par ek comment aaya...",
-      color: "#3b82f6",
-    },
-    {
-      title: "Community Growth",
-      text: "Step by step, ye chhoti jeete ek badi kahani ban gayi...",
-      color: "#f97316",
-    },
-  ];
+const cards = [
+  {
+    title: "First Profitable Trade",
+    text: "Har struggle ke baad, chhoti si success bhi ek badi jeet lagti hai...",
+    color: "#22c55e",
+  },
+  {
+    title: "Subscriber Milestone",
+    text: "Phir ek din mere YouTube video par ek comment aaya...",
+    color: "#3b82f6",
+  },
+  {
+    title: "Community Growth",
+    text: "Step by step, ye chhoti jeete ek badi kahani ban gayi...",
+    color: "#f97316",
+  },
+];
 
-  // Motion data for cards
-  const cardMotionData = cards.map((_, index) => {
-    const x = useMotionValue(
-      Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) + PADDING
-    );
-    const y = useMotionValue(
-      Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) + PADDING
-    );
-    const zIndex = index + 1;
-    const scale = 1 - index * 0.05;
+// Custom hook to manage card motion values and animation
+const useCardMotion = () => {
+  const x = useMotionValue(
+    Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) + PADDING
+  );
+  const y = useMotionValue(
+    Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) + PADDING
+  );
+  const animationRef = useRef<{ xAnim: any; yAnim: any } | null>(null);
 
-    const animationRef = useRef<{ xAnim: any; yAnim: any } | null>(null);
-
-    const animateCard = () => {
-      animationRef.current = {
-        xAnim: animate(
-          x,
-          Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) +
-            PADDING,
-          {
-            type: "spring",
-            damping: 25,
-            stiffness: 15,
-            duration: 15 + Math.random() * 5,
-            onComplete: animateCard,
-          }
-        ),
-        yAnim: animate(
-          y,
-          Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) +
-            PADDING,
-          {
-            type: "spring",
-            damping: 25,
-            stiffness: 15,
-            duration: 15 + Math.random() * 5,
-          }
-        ),
-      };
+  const animateCard = () => {
+    animationRef.current = {
+      xAnim: animate(
+        x,
+        Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) +
+          PADDING,
+        {
+          type: "spring",
+          damping: 25,
+          stiffness: 15,
+          duration: 15 + Math.random() * 5,
+          onComplete: animateCard,
+        }
+      ),
+      yAnim: animate(
+        y,
+        Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) +
+          PADDING,
+        {
+          type: "spring",
+          damping: 25,
+          stiffness: 15,
+          duration: 15 + Math.random() * 5,
+        }
+      ),
     };
+  };
 
-    useEffect(() => {
-      animateCard();
-      return () => {
-        animationRef.current?.xAnim.stop();
-        animationRef.current?.yAnim.stop();
-      };
-    }, []);
+  useEffect(() => {
+    animateCard();
+    return () => {
+      animationRef.current?.xAnim.stop();
+      animationRef.current?.yAnim.stop();
+    };
+  }, []);
 
-    return { x, y, zIndex, scale, animationRef, animateCard };
-  });
+  return { x, y, animationRef, animateCard };
+};
+
+const FloatingGlassyCards3D = () => {
+  const motionCards = cards.map(() => useCardMotion());
 
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden">
-      {/* Sunlight Effect Top-Left */}
       <div className="absolute top-0 left-0 w-72 h-72 md:w-96 md:h-96 rounded-full bg-yellow-400/20 filter blur-3xl" />
 
-      {/* Background Grid & Title */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="absolute inset-0 
@@ -98,16 +95,15 @@ const FloatingGlassyCards3D = () => {
         </h1>
       </div>
 
-      {/* Floating Cards */}
       {cards.map((card, i) => (
         <motion.div
           key={i}
           className="absolute w-64 sm:w-72 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/20 backdrop-blur-[12px] shadow-[0_0_40px_rgba(0,255,255,0.3)] cursor-grab"
           style={{
-            x: cardMotionData[i].x,
-            y: cardMotionData[i].y,
-            zIndex: cardMotionData[i].zIndex,
-            scale: cardMotionData[i].scale,
+            x: motionCards[i].x,
+            y: motionCards[i].y,
+            zIndex: i + 1,
+            scale: 1 - i * 0.05,
             backgroundColor: `${card.color}20`,
             borderColor: `${card.color}60`,
           }}
@@ -120,13 +116,13 @@ const FloatingGlassyCards3D = () => {
             bottom: window.innerHeight - CARD_HEIGHT - PADDING,
           }}
           onDragStart={() => {
-            cardMotionData[i].animationRef.current?.xAnim.stop();
-            cardMotionData[i].animationRef.current?.yAnim.stop();
+            motionCards[i].animationRef.current?.xAnim.stop();
+            motionCards[i].animationRef.current?.yAnim.stop();
           }}
           onDragEnd={() => {
-            cardMotionData[i].animateCard();
+            motionCards[i].animateCard();
           }}
-          whileHover={{ scale: cardMotionData[i].scale + 0.05 }}
+          whileHover={{ scale: 1 - i * 0.05 + 0.05 }}
           whileTap={{ cursor: "grabbing" }}
         >
           <h3

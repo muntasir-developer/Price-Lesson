@@ -3,6 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, TrendingDown, Brain, Rocket } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
+interface TiltCardProps {
+  item: JourneyPoint;
+  index: number;
+}
+interface JourneyPoint {
+  title: string;
+  text: string;
+  icon: typeof BookOpen; // Lucide icon component type
+}
+
 const PainfulJourney = () => {
   const [loading, setLoading] = useState(true);
 
@@ -111,7 +121,7 @@ const PainfulJourney = () => {
 };
 
 /* ---------------- Stylish Tilt Card ---------------- */
-const TiltCard = ({ item, index }: { item: any; index: number }) => {
+const TiltCard = ({ item, index }: TiltCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {

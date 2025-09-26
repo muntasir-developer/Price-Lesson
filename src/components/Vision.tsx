@@ -3,37 +3,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, TrendingUp, BarChart3, LineChart, Rocket } from "lucide-react";
 
-const data = [
-  { year: 2022, ourGrowth: 20, marketGrowth: 10 },
-  { year: 2023, ourGrowth: 45, marketGrowth: 18 },
-  { year: 2024, ourGrowth: 80, marketGrowth: 30 },
-  { year: 2025, ourGrowth: 150, marketGrowth: 55 },
-  { year: 2026, ourGrowth: 220, marketGrowth: 90 },
-];
-
-// Simple SVG Icons
-const EyeIcon = () => (
-  <svg
-    className="w-8 h-8"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-    />
-  </svg>
-);
-
 const TargetIcon = () => (
   <svg
     className="w-8 h-8"
@@ -169,6 +138,7 @@ const fadeUp = {
 };
 
 const VisionMissionSection = () => {
+  const icons = [TrendingUp, BarChart3, LineChart, Rocket];
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-black via-slate-900 to-gray-900 overflow-hidden">
       {/* Background Pattern */}
@@ -273,17 +243,12 @@ const VisionMissionSection = () => {
                   </div>
                 </div>
                 <div className="flex gap-6 items-center justify-center mt-10">
-                  {[
-                    <TrendingUp size={28} />,
-                    <BarChart3 size={28} />,
-                    <LineChart size={28} />,
-                    <Rocket size={28} />,
-                  ].map((icon, i) => (
+                  {icons.map((Icon, i) => (
                     <div
-                      key={i}
+                      key={i} // ✅ unique key
                       className="p-3 bg-green-500/10 rounded-xl text-green-400 group-hover:scale-110 transition-transform duration-300"
                     >
-                      {icon}
+                      <Icon size={28} /> {/* ✅ render component */}
                     </div>
                   ))}
                 </div>
