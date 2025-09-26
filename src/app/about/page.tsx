@@ -31,7 +31,8 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
-    const observers = [];
+    const observers: IntersectionObserver[] = []; // explicitly type the array
+
     const sections = [
       "hero",
       "struggle",
@@ -47,7 +48,7 @@ const AboutPage = () => {
         const observer = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting) {
-              setVisible(section);
+              setVisible(section); // make sure setVisible(section: string) exists
             }
           },
           { threshold: 0.3 }
