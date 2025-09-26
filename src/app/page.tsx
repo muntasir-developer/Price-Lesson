@@ -1,4 +1,8 @@
 "use client";
+
+import React, { useState, useEffect } from "react";
+import Lenis from "lenis";
+
 import StockMarketCourseSection from "@/components/Course";
 import FAQSection from "@/components/Faq";
 import Footer from "@/components/Footer";
@@ -6,18 +10,29 @@ import PainfulJourney from "@/components/PainFul";
 import SmallSuccessSection from "@/components/SmallSucess";
 import SnakeRoadFuturistic from "@/components/Tesimonial";
 import VisionMissionSection from "@/components/Vision";
-import React, { useState, useEffect } from "react";
-import Lenis from "lenis";
 import WhatsAppFloating from "@/components/WhatsApp";
 
-const Hero = () => {
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const Hero: React.FC = () => {
   const images = [
     "/image/banner1.jpg",
     "/image/banner2.jpg",
     "/image/banner3.jpg",
   ];
 
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState<number>(0);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 3,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   /* ---------------- Background Slider ---------------- */
   useEffect(() => {
@@ -28,14 +43,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  /* ---------------- Timer Logic ---------------- */
-  const [timeLeft, setTimeLeft] = useState({
-    days: 3,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
+  /* ---------------- Countdown Timer ---------------- */
   useEffect(() => {
     const target = new Date();
     target.setDate(target.getDate() + 3);
@@ -49,12 +57,12 @@ const Hero = () => {
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      setTimeLeft({ days, hours, minutes, seconds });
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
     };
 
     updateTimer();
@@ -66,14 +74,13 @@ const Hero = () => {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      smoothWheel: true,
-      smoothTouch: false,
+      smooth: true, // ✅ replaces smoothWheel & smoothTouch
     });
 
-    function raf(time) {
+    const raf = (time: number) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
-    }
+    };
 
     requestAnimationFrame(raf);
 
@@ -126,12 +133,10 @@ const Hero = () => {
 
         {/* ---------- Timer Section ---------- */}
         <div className="absolute bottom-6 w-full flex flex-col items-center z-30 px-2">
-          {/* Text Above Timer */}
           <p className="mb-1 text-sm sm:text-base md:text-lg font-medium text-cyan-200 drop-shadow-lg">
             Exclusive 50% Discount
           </p>
 
-          {/* Timer Cards */}
           <div className="flex gap-1.5 sm:gap-2 md:gap-3">
             {[
               { label: "Days", value: timeLeft.days },
@@ -143,7 +148,6 @@ const Hero = () => {
                 key={i}
                 className="relative w-10 sm:w-14 md:w-16 px-1 py-1 sm:px-1.5 sm:py-1.5 md:px-2 md:py-2 rounded-md sm:rounded-lg text-center backdrop-blur-xl bg-white/10 overflow-hidden"
               >
-                {/* Animated Border */}
                 <span className="absolute inset-0 rounded-md sm:rounded-lg p-[1px] animate-border-snake bg-[length:200%_200%] bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500" />
                 <div className="relative z-10">
                   <p className="text-xs sm:text-base md:text-lg font-bold text-cyan-200 leading-tight">
