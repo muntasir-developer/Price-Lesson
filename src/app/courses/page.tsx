@@ -1084,7 +1084,7 @@ export default function TradingCourseLanding() {
               <div className="relative text-center lg:text-left">
                 <div className="relative w-80 h-[460px] mx-auto lg:mx-0 mb-8 overflow-hidden rounded-[50%_45%_55%_50%] shadow-[0_30px_80px_rgba(0,0,0,0.25)] ring-4 ring-emerald-200 bg-white transition-transform duration-500 hover:scale-105">
                   <Image
-                    src="/image/monazir.png"
+                    src="/image/smonazir.png"
                     alt="Md Monazir"
                     width={500} // original width
                     height={500} // original height
