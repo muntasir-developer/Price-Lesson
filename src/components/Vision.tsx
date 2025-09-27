@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useState, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Eye, TrendingUp, BarChart3, LineChart, Rocket } from "lucide-react";
 
-// ✅ Type-safe HoverCard props
 interface HoverCardProps {
   children: ReactNode;
   color: string;
@@ -31,7 +31,6 @@ const HoverCard: React.FC<HoverCardProps> = ({ children, color }) => {
   );
 };
 
-// ✅ Static Tailwind color map (no dynamic strings)
 const colorMap = {
   blue: {
     bg: "bg-blue-500/20",
@@ -61,9 +60,8 @@ const colorMap = {
     text: "text-purple-400",
     textLight: "text-purple-300",
   },
-};
+} as const;
 
-// ✅ Custom Icons
 const TargetIcon = () => (
   <svg
     className="w-8 h-8"
@@ -164,19 +162,34 @@ const UsersIcon = () => (
   </svg>
 );
 
-// ✅ Animation variants
-const fadeUp = {
+// easing as cubic-bezier array — acceptable to framer-motion typing
+const easing: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
+    transition: {
+      delay: i * 0.2,
+      duration: 0.8,
+      ease: easing,
+    },
   }),
-  exit: { opacity: 0, y: -40, transition: { duration: 0.6, ease: "easeIn" } },
+  exit: {
+    opacity: 0,
+    y: -40,
+    transition: { duration: 0.6, ease: easing },
+  },
 };
 
-const VisionMissionSection = () => {
-  const icons = [TrendingUp, BarChart3, LineChart, Rocket];
+const VisionMissionSection: React.FC = () => {
+  const icons: React.ComponentType<any>[] = [
+    TrendingUp,
+    BarChart3,
+    LineChart,
+    Rocket,
+  ];
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-black via-slate-900 to-gray-900 overflow-hidden">
@@ -197,7 +210,7 @@ const VisionMissionSection = () => {
 
       {/* Futuristic Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-[28rem] h-[28rem] bg-gradient-to-br from-green-400/30 via-green-500/10 to-transparent rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute top-0 left-0 w-[28rem] h-[28rem] bg-gradient-to-br from-green-400/30 via-green-500/10 to-transparent rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-tr from-orange-400/30 via-orange-500/10 to-transparent rounded-full blur-[100px] animate-pulse" />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-conic from-blue-400/40 via-purple-500/20 to-transparent rounded-full blur-[120px] opacity-70 animate-spin-slow"
@@ -206,9 +219,9 @@ const VisionMissionSection = () => {
       </div>
 
       {/* Floating Orbs */}
-      <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-green-500/20 to-transparent blur-xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-xl animate-pulse delay-2000"></div>
+      <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-green-500/20 to-transparent blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-xl animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-xl animate-pulse delay-2000" />
 
       <motion.div
         className="relative z-10 container mx-auto px-6 py-20"
@@ -227,9 +240,11 @@ const VisionMissionSection = () => {
               OUR PURPOSE
             </span>
           </div>
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 via-orange-400 to-blue-400 bg-clip-text text-transparent">
             Vision & Mission
           </h1>
+
           <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
             Transforming financial literacy from privilege to birthright
           </p>
@@ -247,6 +262,7 @@ const VisionMissionSection = () => {
                   </div>
                   <h2 className="text-4xl font-bold text-white">Vision</h2>
                 </div>
+
                 <div className="space-y-6 text-white/80 leading-relaxed flex-grow">
                   <p className="text-lg">
                     Our vision is simple yet transformative:{" "}
@@ -255,12 +271,14 @@ const VisionMissionSection = () => {
                       India.
                     </span>
                   </p>
+
                   <p>
                     Today, millions still see the stock market and investing as
                     gambling. We want a future where every student,
                     professional, and family understands how to manage money
                     wisely and secure their destiny.
                   </p>
+
                   <div className="bg-gradient-to-r from-green-500/10 to-transparent border-l-4 border-green-500/50 p-6 rounded-r-xl mt-auto">
                     <p className="font-medium text-green-300">
                       "We dream of a generation that won’t face the struggles we
@@ -269,6 +287,7 @@ const VisionMissionSection = () => {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex gap-6 items-center justify-center mt-10">
                   {icons.map((Icon, i) => (
                     <div
@@ -293,6 +312,7 @@ const VisionMissionSection = () => {
                   </div>
                   <h2 className="text-4xl font-bold text-white">Mission</h2>
                 </div>
+
                 <div className="space-y-6 flex-grow">
                   <p className="text-lg text-white/80 leading-relaxed">
                     With{" "}
@@ -302,6 +322,7 @@ const VisionMissionSection = () => {
                     learning finance in simple Hindi, we aim to scale our impact
                     exponentially.
                   </p>
+
                   <div className="grid gap-4">
                     {[
                       {
@@ -377,7 +398,7 @@ const VisionMissionSection = () => {
       </motion.div>
 
       {/* Decorative Line */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
     </section>
   );
 };
