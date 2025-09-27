@@ -1,8 +1,69 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Eye, TrendingUp, BarChart3, LineChart, Rocket } from "lucide-react";
 
+// ✅ Type-safe HoverCard props
+interface HoverCardProps {
+  children: ReactNode;
+  color: string;
+}
+
+const HoverCard: React.FC<HoverCardProps> = ({ children, color }) => {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  return (
+    <div
+      className="relative group rounded-3xl overflow-hidden h-full"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+      }}
+    >
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300"
+        style={{
+          background: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, ${color}, transparent 70%)`,
+        }}
+      />
+      <div className="relative z-10 h-full">{children}</div>
+    </div>
+  );
+};
+
+// ✅ Static Tailwind color map (no dynamic strings)
+const colorMap = {
+  blue: {
+    bg: "bg-blue-500/20",
+    border: "border-blue-500/20",
+    borderHover: "group-hover:border-blue-400/50",
+    text: "text-blue-400",
+    textLight: "text-blue-300",
+  },
+  green: {
+    bg: "bg-green-500/20",
+    border: "border-green-500/20",
+    borderHover: "group-hover:border-green-400/50",
+    text: "text-green-400",
+    textLight: "text-green-300",
+  },
+  orange: {
+    bg: "bg-orange-500/20",
+    border: "border-orange-500/20",
+    borderHover: "group-hover:border-orange-400/50",
+    text: "text-orange-400",
+    textLight: "text-orange-300",
+  },
+  purple: {
+    bg: "bg-purple-500/20",
+    border: "border-purple-500/20",
+    borderHover: "group-hover:border-purple-400/50",
+    text: "text-purple-400",
+    textLight: "text-purple-300",
+  },
+};
+
+// ✅ Custom Icons
 const TargetIcon = () => (
   <svg
     className="w-8 h-8"
@@ -103,30 +164,7 @@ const UsersIcon = () => (
   </svg>
 );
 
-// Hover Effect Wrapper
-const HoverCard = ({ children, color }) => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  return (
-    <div
-      className="relative group rounded-3xl overflow-hidden h-full"
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-      }}
-    >
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300"
-        style={{
-          background: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, ${color}, transparent 70%)`,
-        }}
-      />
-      <div className="relative z-10 h-full">{children}</div>
-    </div>
-  );
-};
-
-// Animations
+// ✅ Animation variants
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 0) => ({
@@ -139,6 +177,7 @@ const fadeUp = {
 
 const VisionMissionSection = () => {
   const icons = [TrendingUp, BarChart3, LineChart, Rocket];
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-black via-slate-900 to-gray-900 overflow-hidden">
       {/* Background Pattern */}
@@ -147,34 +186,26 @@ const VisionMissionSection = () => {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-            linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
-          `,
+              linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+            `,
             backgroundSize: "50px 50px",
             animation: "gridMove 20s linear infinite",
           }}
-        ></div>
+        />
       </div>
 
-      {/* Futuristic + Classical Modern Background */}
+      {/* Futuristic Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Top-left glow */}
         <div className="absolute top-0 left-0 w-[28rem] h-[28rem] bg-gradient-to-br from-green-400/30 via-green-500/10 to-transparent rounded-full blur-[100px] animate-pulse"></div>
-
-        {/* Bottom-right glow */}
-        <div
-          className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-tr from-orange-400/30 via-orange-500/10 to-transparent rounded-full blur-[100px] animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-
-        {/* Center futuristic orb */}
+        <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-tr from-orange-400/30 via-orange-500/10 to-transparent rounded-full blur-[100px] animate-pulse" />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-conic from-blue-400/40 via-purple-500/20 to-transparent rounded-full blur-[120px] opacity-70 animate-spin-slow"
           style={{ animationDuration: "18s" }}
-        ></div>
+        />
       </div>
 
-      {/* Floating Blur Orbs */}
+      {/* Floating Orbs */}
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-green-500/20 to-transparent blur-xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-xl animate-pulse delay-1000"></div>
       <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-xl animate-pulse delay-2000"></div>
@@ -209,11 +240,7 @@ const VisionMissionSection = () => {
           {/* Vision */}
           <motion.div variants={fadeUp} custom={1}>
             <HoverCard color="rgba(34,197,94,0.25)">
-              <div
-                className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl 
-              border border-white/10 rounded-3xl p-8 md:p-12 transition-all duration-500 
-              h-full flex flex-col hover:border-green-400/50"
-              >
+              <div className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 transition-all duration-500 h-full flex flex-col hover:border-green-400/50">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="p-4 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl text-green-400 group-hover:scale-110 transition-transform duration-300">
                     <Eye />
@@ -245,10 +272,10 @@ const VisionMissionSection = () => {
                 <div className="flex gap-6 items-center justify-center mt-10">
                   {icons.map((Icon, i) => (
                     <div
-                      key={i} // ✅ unique key
+                      key={i}
                       className="p-3 bg-green-500/10 rounded-xl text-green-400 group-hover:scale-110 transition-transform duration-300"
                     >
-                      <Icon size={28} /> {/* ✅ render component */}
+                      <Icon size={28} />
                     </div>
                   ))}
                 </div>
@@ -259,11 +286,7 @@ const VisionMissionSection = () => {
           {/* Mission */}
           <motion.div variants={fadeUp} custom={2}>
             <HoverCard color="rgba(251,146,60,0.25)">
-              <div
-                className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl 
-              border border-white/10 rounded-3xl p-8 md:p-12 transition-all duration-500 
-              h-full flex flex-col hover:border-orange-400/50"
-              >
+              <div className="group bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 transition-all duration-500 h-full flex flex-col hover:border-orange-400/50">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="p-4 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-2xl text-orange-400 group-hover:scale-110 transition-transform duration-300">
                     <TargetIcon />
@@ -305,27 +328,30 @@ const VisionMissionSection = () => {
                         desc: "Financial literacy as fundamental as reading",
                         color: "purple",
                       },
-                    ].map((item, i) => (
-                      <div
-                        key={i}
-                        className={`flex items-start gap-4 p-4 bg-gradient-to-r from-${item.color}-500/10 to-transparent 
-                        rounded-xl border border-${item.color}-500/20 group-hover:border-${item.color}-400/50 transition-all duration-300`}
-                      >
+                    ].map((item, i) => {
+                      const styles =
+                        colorMap[item.color as keyof typeof colorMap];
+                      return (
                         <div
-                          className={`p-2 bg-${item.color}-500/20 rounded-lg mt-1 text-${item.color}-400 group-hover:scale-110 transition-transform duration-300`}
+                          key={i}
+                          className={`flex items-start gap-4 p-4 bg-gradient-to-r from-white/5 to-transparent rounded-xl border ${styles.border} ${styles.borderHover} transition-all duration-300`}
                         >
-                          {item.icon}
-                        </div>
-                        <div>
-                          <h4
-                            className={`font-semibold text-${item.color}-300 mb-1`}
+                          <div
+                            className={`p-2 ${styles.bg} rounded-lg mt-1 ${styles.text} group-hover:scale-110 transition-transform duration-300`}
                           >
-                            {item.title}
-                          </h4>
-                          <p className="text-sm text-white/70">{item.desc}</p>
+                            {item.icon}
+                          </div>
+                          <div>
+                            <h4
+                              className={`font-semibold ${styles.textLight} mb-1`}
+                            >
+                              {item.title}
+                            </h4>
+                            <p className="text-sm text-white/70">{item.desc}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
