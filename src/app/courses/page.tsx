@@ -319,7 +319,7 @@ export default function TradingCourseLanding() {
               {/* Right Side Image Placeholder */}
               {/* Mobile View (a) */}
               <div className="block lg:hidden">
-                <div className="mt-[-25vh] overflow-hidden absolute w-[140vw] flex items-center justify-end rounded-[10rem] rotate-[55deg] bottom-0 top-[67vh] right-[-42vw] h-[94vh] border-r-2 border-blue-400">
+                <div className="mt-[-30vh] overflow-hidden absolute w-[140vw] flex items-center justify-end rounded-[10rem] rotate-[55deg] bottom-0 top-[67vh] right-[-50vw] h-[94vh] border-r-2 border-blue-400">
                   <div className="flex mt-[1vh] w-[80vw] bg-gradient-to-r via-green-400 to-orange-400 rounded-[10rem] relative h-[95vh] top-[-1.5vw] border-r-2 ">
                     <Image
                       src="/image/monazir.png"
@@ -327,7 +327,7 @@ export default function TradingCourseLanding() {
                       width={1000}
                       height={1000}
                       priority
-                      className="object-contain rotate-[-58deg] relative right-28 top-[-1.5vh] w-[1000px] h-[1000px] scale-[1.4]"
+                      className="object-contain rotate-[-58deg] relative right-32 top-[12vh] w-[1000px] h-[1000px] scale-[1.4]"
                     />
                   </div>
                 </div>
