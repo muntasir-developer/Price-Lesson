@@ -304,9 +304,10 @@ export default function TradingCourseLanding() {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                   <button
                     onClick={() =>
-                      router.push("https://pelglp.courses.store/691872")
+                      (window.location.href =
+                        "https://pelglp.courses.store/691872")
                     }
-                    className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105 shadow-md flex items-center justify-center space-x-2"
+                    className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105  shadow-[0_0_8px_0.01px_orange] flex items-center  justify-center space-x-2"
                   >
                     <Play className="h-5 w-5" />
                     <span>Start Learning Now</span>
@@ -1082,9 +1083,9 @@ export default function TradingCourseLanding() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Mentor Image */}
               <div className="relative text-center lg:text-left">
-                <div className="relative w-80 h-[460px] mx-auto lg:mx-0 mb-8 overflow-hidden rounded-[50%_45%_55%_50%] shadow-[0_30px_80px_rgba(0,0,0,0.25)] ring-4 ring-emerald-200 bg-white transition-transform duration-500 hover:scale-105">
+                <div className="relative w-80 h-[460px] mx-auto lg:mx-0 mb-8 overflow-hidden rounded-[50%_45%_55%_50%] shadow-[0_0px_5px_6px_green] ring-4 ring-emerald-200 bg-white transition-transform duration-500 hover:scale-105">
                   <Image
-                    src="/image/smonazir.png"
+                    src="/image/mmonazir.jpg"
                     alt="Md Monazir"
                     width={500} // original width
                     height={500} // original height
@@ -1490,7 +1491,7 @@ export default function TradingCourseLanding() {
                   {/* CTA Button */}
                   <Link
                     href="https://pelglp.courses.store/691872"
-                    className="relative inline-block px-6 py-3 font-bold text-white rounded-xl
+                    className="relative inline-block px-6 py-3 font-bold text-sm text-white rounded-xl
                  bg-gradient-to-r from-emerald-600 to-blue-600
                  bg-white/20 backdrop-blur-md border border-white/30 shadow-lg
                  hover:scale-105 hover:from-emerald-700 hover:to-blue-700 hover:shadow-xl
