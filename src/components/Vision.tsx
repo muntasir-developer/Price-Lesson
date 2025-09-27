@@ -184,7 +184,7 @@ const fadeUp: Variants = {
 };
 
 const VisionMissionSection: React.FC = () => {
-  const icons: React.ComponentType<any>[] = [
+  const icons: React.ComponentType<React.SVGProps<SVGSVGElement>>[] = [
     TrendingUp,
     BarChart3,
     LineChart,
