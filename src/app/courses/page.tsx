@@ -327,7 +327,7 @@ export default function TradingCourseLanding() {
                       width={1000}
                       height={1000}
                       priority
-                      className="object-contain rotate-[-58deg] relative right-32 top-[14vh] w-[1000px] h-[1000px] scale-[1.4]"
+                      className="object-contain rotate-[-58deg] relative right-8 top-[14vh] w-[1000px] h-[1000px] scale-[1.4]"
                     />
                   </div>
                 </div>
