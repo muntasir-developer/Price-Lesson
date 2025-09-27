@@ -4,6 +4,7 @@ import {
   animate,
   useMotionValue,
   AnimationPlaybackControls,
+  MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useCallback } from "react";
 import "@fontsource/oswald";
@@ -37,8 +38,8 @@ const cards: Card[] = [
 ];
 
 interface CardMotion {
-  x: ReturnType<typeof useMotionValue>;
-  y: ReturnType<typeof useMotionValue>;
+  x: MotionValue<number>;
+  y: MotionValue<number>;
   animationRef: React.MutableRefObject<{
     xAnim: AnimationPlaybackControls;
     yAnim: AnimationPlaybackControls;
@@ -48,17 +49,25 @@ interface CardMotion {
 
 const useCardMotion = (): CardMotion => {
   const x = useMotionValue(
-    Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) + PADDING
+    typeof window !== "undefined"
+      ? Math.random() * (window.innerWidth - PADDING * 2 - CARD_WIDTH) + PADDING
+      : 0
   );
   const y = useMotionValue(
-    Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) + PADDING
+    typeof window !== "undefined"
+      ? Math.random() * (window.innerHeight - PADDING * 2 - CARD_HEIGHT) +
+          PADDING
+      : 0
   );
+
   const animationRef = useRef<{
     xAnim: AnimationPlaybackControls;
     yAnim: AnimationPlaybackControls;
   } | null>(null);
 
   const animateCard = useCallback(() => {
+    if (typeof window === "undefined") return;
+
     animationRef.current = {
       xAnim: animate(
         x,
@@ -117,8 +126,14 @@ const FloatingCard = ({ card, index }: { card: Card; index: number }) => {
       dragConstraints={{
         top: PADDING,
         left: PADDING,
-        right: window.innerWidth - CARD_WIDTH - PADDING,
-        bottom: window.innerHeight - CARD_HEIGHT - PADDING,
+        right:
+          typeof window !== "undefined"
+            ? window.innerWidth - CARD_WIDTH - PADDING
+            : 0,
+        bottom:
+          typeof window !== "undefined"
+            ? window.innerHeight - CARD_HEIGHT - PADDING
+            : 0,
       }}
       onDragStart={() => {
         animationRef.current?.xAnim.stop();
@@ -143,8 +158,10 @@ const FloatingCard = ({ card, index }: { card: Card; index: number }) => {
 const FloatingGlassyCards3D = () => {
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden">
+      {/* background glow */}
       <div className="absolute top-0 left-0 w-72 h-72 md:w-96 md:h-96 rounded-full bg-yellow-400/20 filter blur-3xl" />
 
+      {/* grid + title */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="absolute inset-0 
@@ -159,6 +176,7 @@ const FloatingGlassyCards3D = () => {
         </h1>
       </div>
 
+      {/* floating cards */}
       {cards.map((card, i) => (
         <FloatingCard key={card.title} card={card} index={i} />
       ))}
