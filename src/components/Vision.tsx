@@ -69,12 +69,14 @@ interface MissionItem {
   color: keyof typeof colorMap;
 }
 
+// Custom SVG Components
 const TargetIcon = () => (
   <svg
     className="w-8 h-8"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="12" cy="12" r="10" strokeWidth={2} />
     <circle cx="12" cy="12" r="6" strokeWidth={2} />
@@ -83,7 +85,12 @@ const TargetIcon = () => (
 );
 
 const StarIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-4 h-4"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
 );
@@ -94,6 +101,7 @@ const BookOpenIcon = () => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       strokeLinecap="round"
@@ -110,6 +118,7 @@ const TrendingUpIcon = () => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       strokeLinecap="round"
@@ -126,6 +135,7 @@ const GlobeIcon = () => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <circle cx="12" cy="12" r="10" strokeWidth={2} />
     <path
@@ -143,6 +153,7 @@ const LightbulbIcon = () => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       strokeLinecap="round"
@@ -159,6 +170,7 @@ const UsersIcon = () => (
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       strokeLinecap="round"
@@ -169,7 +181,7 @@ const UsersIcon = () => (
   </svg>
 );
 
-// easing for framer-motion
+// Easing for framer-motion
 const easing: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const fadeUp: Variants = {
@@ -183,12 +195,7 @@ const fadeUp: Variants = {
 };
 
 const VisionMissionSection: React.FC = () => {
-  const icons: React.ComponentType<React.SVGProps<SVGSVGElement>>[] = [
-    TrendingUp,
-    BarChart3,
-    LineChart,
-    Rocket,
-  ];
+  const icons = [TrendingUp, BarChart3, LineChart, Rocket];
 
   const missionItems: MissionItem[] = [
     {
@@ -227,22 +234,28 @@ const VisionMissionSection: React.FC = () => {
             backgroundImage: `linear-gradient(rgba(34,197,94,0.1) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(34,197,94,0.1) 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
-            animation: "gridMove 20s linear infinite",
           }}
         />
       </div>
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-[28rem] h-[28rem] bg-gradient-to-br from-green-400/30 via-green-500/10 to-transparent rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-tr from-orange-400/30 via-orange-500/10 to-transparent rounded-full blur-[100px] animate-pulse" />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-conic from-blue-400/40 via-purple-500/20 to-transparent rounded-full blur-[120px] opacity-70 animate-spin-slow"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-conic from-blue-400/40 via-purple-500/20 to-transparent rounded-full blur-[120px] opacity-70 animate-spin"
           style={{ animationDuration: "18s" }}
         />
       </div>
 
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-gradient-to-br from-green-500/20 to-transparent blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-xl animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-xl animate-pulse delay-2000" />
+      <div
+        className="absolute bottom-20 right-10 w-48 h-48 rounded-full bg-gradient-to-br from-orange-500/20 to-transparent blur-xl animate-pulse"
+        style={{ animationDelay: "1000ms" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/4 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent blur-xl animate-pulse"
+        style={{ animationDelay: "2000ms" }}
+      />
 
       <motion.div
         className="relative z-10 container mx-auto px-6 py-20"
@@ -298,9 +311,9 @@ const VisionMissionSection: React.FC = () => {
                   </p>
                   <div className="bg-gradient-to-r from-green-500/10 to-transparent border-l-4 border-green-500/50 p-6 rounded-r-xl mt-auto">
                     <p className="font-medium text-green-300">
-                      "We dream of a generation that won’t face the struggles we
-                      once did — where wealth, knowledge, and freedom are for
-                      all."
+                      &ldquo;We dream of a generation that won&apos;t face the
+                      struggles we once did — where wealth, knowledge, and
+                      freedom are for all.&rdquo;
                     </p>
                   </div>
                 </div>
