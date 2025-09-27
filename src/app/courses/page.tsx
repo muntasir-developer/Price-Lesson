@@ -207,7 +207,7 @@ export default function TradingCourseLanding() {
               href="https://pelglp.courses.store/691872"
               className="absolute z-50 inline-flex sm:hidden 
                bg-gradient-to-r from-emerald-500 to-blue-600
-               text-white px-4 py-2 rounded-full text-sm font-semibold 
+               text-white right-4  px-4 py-2 rounded-full text-sm font-semibold 
                shadow-md hover:scale-105 transition-all"
             >
               Get Started
@@ -264,7 +264,7 @@ export default function TradingCourseLanding() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-4 group  lg:pl-0 pl-12 justify-start">
+                    <div className="flex items-center gap-4 group  ml-14  lg:justify-start">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
