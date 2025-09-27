@@ -264,7 +264,7 @@ export default function TradingCourseLanding() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-4 group  ml-14  lg:justify-start">
+                    <div className="flex items-center gap-4 group  ml-12 lg:ml-0  lg:justify-start">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
@@ -1084,7 +1084,7 @@ export default function TradingCourseLanding() {
               <div className="relative text-center lg:text-left">
                 <div className="relative w-80 h-[460px] mx-auto lg:mx-0 mb-8 overflow-hidden rounded-[50%_45%_55%_50%] shadow-[0_30px_80px_rgba(0,0,0,0.25)] ring-4 ring-emerald-200 bg-white transition-transform duration-500 hover:scale-105">
                   <Image
-                    src="/monazir.png"
+                    src="/image/monazir.png"
                     alt="Md Monazir"
                     width={500} // original width
                     height={500} // original height
