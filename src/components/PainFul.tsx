@@ -32,26 +32,26 @@ const PainfulJourney = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <div className="relative w-[550px] h-[550px] rounded-full border border-green-400/30 flex items-center justify-center">
+            <div className="relative w-[90vw] max-w-[550px] h-[90vw] max-h-[550px] rounded-full border border-green-400/30 flex items-center justify-center">
               {/* Radar Sweep Beam */}
               <div className="absolute inset-0 rounded-full bg-[conic-gradient(rgba(34,197,94,0.6)_0deg,transparent_90deg)] animate-spin-slow"></div>
 
               {/* Pulsing Circles */}
               <div className="absolute inset-0 rounded-full border border-green-400/20 animate-ping-slow"></div>
-              <div className="absolute inset-10 rounded-full border border-green-400/30 animate-ping-slower"></div>
-              <div className="absolute inset-20 rounded-full border border-green-400/40 animate-ping-slowest"></div>
+              <div className="absolute inset-[10%] rounded-full border border-green-400/30 animate-ping-slower"></div>
+              <div className="absolute inset-[20%] rounded-full border border-green-400/40 animate-ping-slowest"></div>
 
               {/* Center Brand Name */}
-              <h1 className="relative z-10 text-4xl opacity-20 md:text-5xl font-extrabold text-green-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.8)]">
+              <h1 className="relative z-10 text-3xl sm:text-4xl md:text-5xl opacity-20 font-extrabold text-green-400 drop-shadow-[0_0_20px_rgba(34,197,94,0.8)]">
                 Price Lesson
               </h1>
 
               {/* Scattered Small Text */}
               {[
-                { top: "20%", left: "30%", size: "text-xs" },
-                { top: "40%", left: "70%", size: "text-sm" },
-                { top: "65%", left: "25%", size: "text-[10px]" },
-                { top: "75%", left: "60%", size: "text-xs" },
+                { top: "20%", left: "30%", size: "text-[10px] sm:text-xs" },
+                { top: "40%", left: "70%", size: "text-xs sm:text-sm" },
+                { top: "65%", left: "25%", size: "text-[8px] sm:text-[10px]" },
+                { top: "75%", left: "60%", size: "text-[10px] sm:text-xs" },
               ].map((pos, i) => (
                 <span
                   key={i}
@@ -63,7 +63,7 @@ const PainfulJourney = () => {
               ))}
             </div>
 
-            <p className="absolute bottom-20 text-gray-400 text-lg animate-pulse">
+            <p className="absolute bottom-20 text-gray-400 text-base sm:text-lg animate-pulse">
               Searching...
             </p>
           </motion.div>
@@ -75,9 +75,9 @@ const PainfulJourney = () => {
 
       {/* Gradient Spotlights */}
       <div className="absolute inset-0">
-        <div className="absolute top-32 left-10 w-80 h-80 bg-green-500/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-32 left-10 w-64 h-64 sm:w-80 sm:h-80 bg-green-500/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 sm:w-96 sm:h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[400px] sm:w-[500px] h-[400px] sm:h-[500px] bg-orange-500/20 rounded-full blur-3xl"></div>
       </div>
 
       {/* Content (fades in after radar) */}
@@ -88,11 +88,11 @@ const PainfulJourney = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 bg-gradient-to-r from-green-400 via-blue-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 bg-gradient-to-r from-green-400 via-blue-400 to-orange-400 bg-clip-text text-transparent">
             My Painful Journey
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-16">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-16">
             Every success has a story, and mine began with struggle. At 17,
             while most of my friends were enjoying college life, I was busy
             trying to understand charts, markets, and money. I made mistakes,
@@ -108,7 +108,7 @@ const PainfulJourney = () => {
             ))}
           </div>
 
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mt-20 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mt-20 max-w-3xl mx-auto">
             This journey wasn’t easy, but it built the foundation of who I am
             today — and why I created this platform. Now, my mission is to help
             others avoid the same mistakes and achieve financial freedom with

@@ -11,6 +11,7 @@ import SmallSuccessSection from "@/components/SmallSucess";
 import SnakeRoadFuturistic from "@/components/Tesimonial";
 import VisionMissionSection from "@/components/Vision";
 import WhatsAppFloating from "@/components/WhatsApp";
+import Link from "next/link";
 
 interface TimeLeft {
   days: number;
@@ -20,11 +21,31 @@ interface TimeLeft {
 }
 
 const Hero: React.FC = () => {
-  const images = [
+  /* ---------------- Images for desktop & mobile ---------------- */
+  const desktopImages = [
     "/image/banner1.jpg",
     "/image/banner2.jpg",
-    "/image/banner3.jpg",
+    "/image/banner1.jpg",
   ];
+
+  const mobileImages = [
+    "/image/mobile-banner1.jpg",
+    "/image/mobile-banner1.jpg",
+  ];
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind `md` breakpoint
+    };
+
+    checkScreen(); // run once at mount
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const images = isMobile ? mobileImages : desktopImages;
 
   const [current, setCurrent] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
@@ -73,8 +94,8 @@ const Hero: React.FC = () => {
   /* ---------------- Lenis Smooth Scrolling ---------------- */
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // Scroll duration
-      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // Custom easing function
+      duration: 1.2,
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
     });
 
     const raf = (time: number) => {
@@ -91,19 +112,27 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full lg:h-screen h-[90vh] flex items-center justify-center overflow-hidden">
         {/* ---------- Background Slider ---------- */}
-        <div className="absolute inset-0">
+        <div className=" absolute inset-0">
           {images.map((img, i) => (
             <div
               key={i}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-out ${
+              className={`absolute inset-0 bg-cover bg-no-repeat mt-24 lg:mt-0 lg:bg-cover bg-center transition-opacity duration-[2000ms] ease-out ${
                 i === current ? "opacity-100" : "opacity-0"
               }`}
               style={{ backgroundImage: `url(${img})` }}
             />
           ))}
 
+          {/* ---------- Clickable Overlay ---------- */}
+          <Link
+            href="https://pelglp.courses.store/691872"
+            target="_blank"
+            className="absolute inset-0 z-20"
+          >
+            <span className="sr-only">Go to Course Page</span>
+          </Link>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-purple-500/30 to-pink-400/30 animate-[gradientShift_18s_linear_infinite] mix-blend-overlay" />
 
@@ -132,7 +161,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* ---------- Timer Section ---------- */}
-        <div className="absolute bottom-6 w-full flex flex-col items-center z-30 px-2">
+        <div className="absolute bottom-[-3vh] lg:bottom-8 lg:pb-0 pb-10 w-full flex flex-col items-center z-30 px-2">
           <p className="mb-1 text-sm sm:text-base md:text-lg font-medium text-cyan-200 drop-shadow-lg">
             Exclusive 50% Discount
           </p>
