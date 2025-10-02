@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   BookOpen,
   TrendingUp,
@@ -19,6 +20,8 @@ const TradingCourseSection = () => {
     minutes: 0,
     seconds: 0,
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -295,7 +298,10 @@ const TradingCourseSection = () => {
 
         {/* Call-to-Action Buttons */}
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:gap-4 lg:gap-6 justify-center items-center px-4">
-          <button className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
+          <button
+            onClick={() => router.push("https://pelglp.courses.store/691872")}
+            className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
+          >
             <Target className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
             <span className="text-sm sm:text-base">🎯 Enroll Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -307,11 +313,13 @@ const TradingCourseSection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
           </button>
 
-          <button className="group relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
-            <Phone className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
-            <span className="text-sm sm:text-base">📞 Talk to Mentor</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-          </button>
+          <a href="tel:+918578064265" className="w-full sm:w-auto">
+            <button className="group relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 flex items-center gap-2 sm:gap-3 justify-center w-full">
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-sm sm:text-base">📞 Talk to Mentor</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+            </button>
+          </a>
         </div>
       </div>
 

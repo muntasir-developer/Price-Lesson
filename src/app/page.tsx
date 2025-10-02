@@ -22,15 +22,11 @@ interface TimeLeft {
 
 const Hero: React.FC = () => {
   /* ---------------- Images for desktop & mobile ---------------- */
-  const desktopImages = [
-    "/image/banner1.jpg",
-    "/image/banner2.jpg",
-    "/image/banner1.jpg",
-  ];
+  const desktopImages = ["/image/banner1.jpg", "/image/crypto-desk-banner.jpg"];
 
   const mobileImages = [
     "/image/mobile-banner1.jpg",
-    "/image/mobile-banner1.jpg",
+    "/image/crypto-mob-banner.jpg",
   ];
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -128,7 +124,6 @@ const Hero: React.FC = () => {
           {/* ---------- Clickable Overlay ---------- */}
           <Link
             href="https://pelglp.courses.store/691872"
-            target="_blank"
             className="absolute inset-0 z-20"
           >
             <span className="sr-only">Go to Course Page</span>
