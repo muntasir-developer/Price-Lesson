@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const menuItems = ["Home", "About", "Courses", "Contact"];
+  const router = useRouter();
 
   const GradientBorderButton = () => (
     <button
+      onClick={() => router.push("https://pelglp.courses.store/691872")}
       className="glassy-gradient-button px-6 py-2 rounded-full font-semibold text-white
       bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500
       bg-clip-text text-transparent

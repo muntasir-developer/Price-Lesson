@@ -352,7 +352,7 @@ export default function ContactPage(): React.ReactElement {
             {/* Social Links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 relative z-10">
               <a
-                href="https://www.pricelesson.com"
+                href="https://www.pricelesson.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-orange-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -362,7 +362,7 @@ export default function ContactPage(): React.ReactElement {
               </a>
 
               <a
-                href="#"
+                href="https://www.youtube.com/@Pricelessonhindi"
                 className="group flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-red-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Youtube className="w-6 h-6 text-red-400 group-hover:scale-110 transition-transform" />
@@ -370,7 +370,7 @@ export default function ContactPage(): React.ReactElement {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/pricelesson0/?utm_source=qr"
                 className="group flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-pink-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Instagram className="w-6 h-6 text-pink-400 group-hover:scale-110 transition-transform" />
@@ -378,7 +378,7 @@ export default function ContactPage(): React.ReactElement {
               </a>
 
               <a
-                href="#"
+                href="https://www.facebook.com/share/1Esirow823/"
                 className="group flex items-center gap-3 p-4 bg-white/5 rounded-xl hover:bg-blue-500/20 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Facebook className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />

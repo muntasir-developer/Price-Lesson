@@ -158,7 +158,7 @@ const Footer = () => {
                     icon: Instagram,
                     text: "@pricelesson",
                     color: "hover:text-pink-400",
-                    url: "https://www.instagram.com/wealthlesson500/?utm_source=qr&r=nametag",
+                    url: "https://www.instagram.com/pricelesson0/?utm_source=qr",
                   },
                   {
                     icon: Facebook,

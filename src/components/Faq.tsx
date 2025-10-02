@@ -245,13 +245,15 @@ const FAQSection: React.FC = () => {
                 <span className="truncate">Visit Full FAQ Section</span>
               </button>
 
-              <button
-                className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-sm sm:text-base"
-                type="button"
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-pulse" />
-                <span>Contact Us</span>
-              </button>
+              <a href="tel:+918578064265" className="w-full sm:w-auto">
+                <button
+                  className="group relative px-4 sm:px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-semibold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-sm sm:text-base"
+                  type="button"
+                >
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-pulse" />
+                  <span>Contact Us</span>
+                </button>
+              </a>
             </div>
           </div>
         </div>
