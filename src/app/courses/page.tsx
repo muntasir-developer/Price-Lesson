@@ -704,288 +704,308 @@ export default function TradingCourseLanding() {
         >
           <div className="max-w-7xl mx-auto">
             {/* Heading */}
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-gray-900">
-                Complete 18-Module Trading Curriculum
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="inline-block mb-4">
+                <span className="bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold tracking-wide">
+                  COMPREHENSIVE CURRICULUM
+                </span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 tracking-tight">
+                18-Module Trading
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
+                  Mastery Program
+                </span>
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                From beginner to advanced trader – a structured roadmap
+              <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                From beginner to advanced trader – a structured roadmap to
+                financial mastery
               </p>
             </div>
-
-            {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {[
-                {
-                  module: "Module 1",
-                  title: "Introduction to Financial Markets",
-                  description:
-                    "Understand how financial markets work and their role in the economy.",
-                  highlights: [
-                    "Market types",
-                    "Participants",
-                    "Exchanges",
-                    "Regulations",
-                  ],
-                  outcome:
-                    "Gain complete clarity on how markets function globally.",
-                },
-                {
-                  module: "Module 2",
-                  title: "Basics of Stock Trading",
-                  description:
-                    "Learn stock trading fundamentals and how to place your first trade.",
-                  highlights: [
-                    "Stock basics",
-                    "Order types",
-                    "Bid/ask spread",
-                    "Settlement",
-                  ],
-                  outcome:
-                    "Be confident in executing your very first stock trade.",
-                },
-                {
-                  module: "Module 3",
-                  title: "Understanding Stocks & Indices",
-                  description:
-                    "Grasp how stocks and indices are valued and tracked.",
-                  highlights: [
-                    "Equity types",
-                    "Indices role",
-                    "Blue chips",
-                    "Sector indices",
-                  ],
-                  outcome: "Understand the backbone of stock market movement.",
-                },
-                {
-                  module: "Module 4",
-                  title: "Technical Analysis Basics",
-                  description:
-                    "Foundation of chart reading and price action understanding.",
-                  highlights: [
-                    "Charts",
-                    "Timeframes",
-                    "Support/resistance",
-                    "Trends",
-                  ],
-                  outcome:
-                    "Start identifying market directions with technical tools.",
-                },
-                {
-                  module: "Module 5",
-                  title: "Candlestick Patterns",
-                  description:
-                    "Learn how candlesticks reveal market psychology.",
-                  highlights: ["Doji", "Hammer", "Engulfing", "Shooting star"],
-                  outcome:
-                    "Decode trader emotions directly from candlestick charts.",
-                },
-                {
-                  module: "Module 6",
-                  title: "Chart Patterns",
-                  description: "Recognize reversal and continuation patterns.",
-                  highlights: [
-                    "Head & Shoulders",
-                    "Triangles",
-                    "Flags",
-                    "Double tops/bottoms",
-                  ],
-                  outcome: "Spot major trend changes before they fully unfold.",
-                },
-                {
-                  module: "Module 7",
-                  title: "Indicators & Tools",
-                  description:
-                    "Use indicators to support your trading decisions.",
-                  highlights: [
-                    "Moving averages",
-                    "RSI",
-                    "MACD",
-                    "Bollinger Bands",
-                  ],
-                  outcome:
-                    "Enhance your decision-making with reliable trading tools.",
-                },
-                {
-                  module: "Module 8",
-                  title: "Price Action Trading",
-                  description:
-                    "Master trading without relying heavily on indicators.",
-                  highlights: [
-                    "Support/resistance zones",
-                    "Breakouts",
-                    "Pullbacks",
-                    "Market structure",
-                  ],
-                  outcome: "Trade confidently with pure market price behavior.",
-                },
-                {
-                  module: "Module 9",
-                  title: "Intraday & Swing Trading Strategies",
-                  description:
-                    "Practical trading methods for short and medium-term gains.",
-                  highlights: [
-                    "Scalping",
-                    "Momentum",
-                    "Trend following",
-                    "Reversals",
-                  ],
-                  outcome:
-                    "Have ready-to-use strategies for daily and swing trades.",
-                },
-                {
-                  module: "Module 10",
-                  title: "Risk Management & Trading Psychology",
-                  description: "Develop discipline and manage trading risks.",
-                  highlights: [
-                    "Position sizing",
-                    "Stop losses",
-                    "Risk/reward",
-                    "Mindset",
-                  ],
-                  outcome:
-                    "Build the discipline and mindset of a professional trader.",
-                },
-                {
-                  module: "Module 11",
-                  title: "Introduction to Derivatives",
-                  description: "Basics of futures and options trading.",
-                  highlights: [
-                    "What are derivatives",
-                    "Contracts",
-                    "Margins",
-                    "Leverage",
-                  ],
-                  outcome:
-                    "Understand the gateway to advanced trading instruments.",
-                },
-                {
-                  module: "Module 12",
-                  title: "Futures Trading",
-                  description:
-                    "Trading in futures markets with strategies and hedging.",
-                  highlights: [
-                    "Contract specs",
-                    "Hedging",
-                    "Speculation",
-                    "Rollovers",
-                  ],
-                  outcome:
-                    "Confidently trade and hedge with futures contracts.",
-                },
-                {
-                  module: "Module 13",
-                  title: "Options Trading Basics",
-                  description:
-                    "Understand calls, puts, and basic options usage.",
-                  highlights: [
-                    "Call/put options",
-                    "Premiums",
-                    "Moneyness",
-                    "Expiration",
-                  ],
-                  outcome: "Grasp the building blocks of the options market.",
-                },
-                {
-                  module: "Module 14",
-                  title: "Options Strategies - Directional",
-                  description:
-                    "Directional strategies to profit from bullish or bearish trends.",
-                  highlights: [
-                    "Long call",
-                    "Long put",
-                    "Spreads",
-                    "Protective strategies",
-                  ],
-                  outcome: "Profit from clear market directions using options.",
-                },
-                {
-                  module: "Module 15",
-                  title: "Options Strategies - Non-Directional (Selling)",
-                  description:
-                    "Generate income from neutral or range-bound markets.",
-                  highlights: [
-                    "Iron condor",
-                    "Straddles",
-                    "Strangles",
-                    "Credit spreads",
-                  ],
-                  outcome: "Earn consistent income in sideways markets.",
-                },
-                {
-                  module: "Module 16",
-                  title: "Advanced Greeks & Strategy Optimization",
-                  description:
-                    "Master options greeks for advanced risk management.",
-                  highlights: ["Delta", "Gamma", "Theta", "Vega"],
-                  outcome:
-                    "Control risk like a pro using advanced option Greeks.",
-                },
-                {
-                  module: "Module 17",
-                  title: "Building Your Own Trading System",
-                  description:
-                    "Create a personal trading plan and test strategies.",
-                  highlights: [
-                    "Backtesting",
-                    "Rules creation",
-                    "Automation basics",
-                    "System optimization",
-                  ],
-                  outcome:
-                    "Have your very own trading system ready for execution.",
-                },
-                {
-                  module: "Module 18",
-                  title: "Live Market Analysis & Practice",
-                  description: "Apply everything with live trading examples.",
-                  highlights: [
-                    "Real trades",
-                    "Case studies",
-                    "Market review",
-                    "Hands-on practice",
-                  ],
-                  outcome:
-                    "Step into the real market with guided live experience.",
-                },
-              ].map((module, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300"
-                >
-                  {/* Module Title */}
-                  <div className="flex flex-wrap items-center gap-3 mb-3 sm:mb-4">
-                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
-                      {module.module}
+            {/* Scrollable Grid Container */}
+            <div className="max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] overflow-y-auto pr-2 scrollbar-thin">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+                {[
+                  {
+                    module: "Module 1",
+                    title: "Introduction to Financial Markets",
+                    description:
+                      "Understand how financial markets work and their role in the economy.",
+                    highlights: [
+                      "Market types",
+                      "Participants",
+                      "Exchanges",
+                      "Regulations",
+                    ],
+                    outcome:
+                      "Gain complete clarity on how markets function globally.",
+                  },
+                  {
+                    module: "Module 2",
+                    title: "Basics of Stock Trading",
+                    description:
+                      "Learn stock trading fundamentals and how to place your first trade.",
+                    highlights: [
+                      "Stock basics",
+                      "Order types",
+                      "Bid/ask spread",
+                      "Settlement",
+                    ],
+                    outcome:
+                      "Be confident in executing your very first stock trade.",
+                  },
+                  {
+                    module: "Module 3",
+                    title: "Understanding Stocks & Indices",
+                    description:
+                      "Grasp how stocks and indices are valued and tracked.",
+                    highlights: [
+                      "Equity types",
+                      "Indices role",
+                      "Blue chips",
+                      "Sector indices",
+                    ],
+                    outcome:
+                      "Understand the backbone of stock market movement.",
+                  },
+                  {
+                    module: "Module 4",
+                    title: "Technical Analysis Basics",
+                    description:
+                      "Foundation of chart reading and price action understanding.",
+                    highlights: [
+                      "Charts",
+                      "Timeframes",
+                      "Support/resistance",
+                      "Trends",
+                    ],
+                    outcome:
+                      "Start identifying market directions with technical tools.",
+                  },
+                  {
+                    module: "Module 5",
+                    title: "Candlestick Patterns",
+                    description:
+                      "Learn how candlesticks reveal market psychology.",
+                    highlights: [
+                      "Doji",
+                      "Hammer",
+                      "Engulfing",
+                      "Shooting star",
+                    ],
+                    outcome:
+                      "Decode trader emotions directly from candlestick charts.",
+                  },
+                  {
+                    module: "Module 6",
+                    title: "Chart Patterns",
+                    description:
+                      "Recognize reversal and continuation patterns.",
+                    highlights: [
+                      "Head & Shoulders",
+                      "Triangles",
+                      "Flags",
+                      "Double tops/bottoms",
+                    ],
+                    outcome:
+                      "Spot major trend changes before they fully unfold.",
+                  },
+                  {
+                    module: "Module 7",
+                    title: "Indicators & Tools",
+                    description:
+                      "Use indicators to support your trading decisions.",
+                    highlights: [
+                      "Moving averages",
+                      "RSI",
+                      "MACD",
+                      "Bollinger Bands",
+                    ],
+                    outcome:
+                      "Enhance your decision-making with reliable trading tools.",
+                  },
+                  {
+                    module: "Module 8",
+                    title: "Price Action Trading",
+                    description:
+                      "Master trading without relying heavily on indicators.",
+                    highlights: [
+                      "Support/resistance zones",
+                      "Breakouts",
+                      "Pullbacks",
+                      "Market structure",
+                    ],
+                    outcome:
+                      "Trade confidently with pure market price behavior.",
+                  },
+                  {
+                    module: "Module 9",
+                    title: "Intraday & Swing Trading Strategies",
+                    description:
+                      "Practical trading methods for short and medium-term gains.",
+                    highlights: [
+                      "Scalping",
+                      "Momentum",
+                      "Trend following",
+                      "Reversals",
+                    ],
+                    outcome:
+                      "Have ready-to-use strategies for daily and swing trades.",
+                  },
+                  {
+                    module: "Module 10",
+                    title: "Risk Management & Trading Psychology",
+                    description: "Develop discipline and manage trading risks.",
+                    highlights: [
+                      "Position sizing",
+                      "Stop losses",
+                      "Risk/reward",
+                      "Mindset",
+                    ],
+                    outcome:
+                      "Build the discipline and mindset of a professional trader.",
+                  },
+                  {
+                    module: "Module 11",
+                    title: "Introduction to Derivatives",
+                    description: "Basics of futures and options trading.",
+                    highlights: [
+                      "What are derivatives",
+                      "Contracts",
+                      "Margins",
+                      "Leverage",
+                    ],
+                    outcome:
+                      "Understand the gateway to advanced trading instruments.",
+                  },
+                  {
+                    module: "Module 12",
+                    title: "Futures Trading",
+                    description:
+                      "Trading in futures markets with strategies and hedging.",
+                    highlights: [
+                      "Contract specs",
+                      "Hedging",
+                      "Speculation",
+                      "Rollovers",
+                    ],
+                    outcome:
+                      "Confidently trade and hedge with futures contracts.",
+                  },
+                  {
+                    module: "Module 13",
+                    title: "Options Trading Basics",
+                    description:
+                      "Understand calls, puts, and basic options usage.",
+                    highlights: [
+                      "Call/put options",
+                      "Premiums",
+                      "Moneyness",
+                      "Expiration",
+                    ],
+                    outcome: "Grasp the building blocks of the options market.",
+                  },
+                  {
+                    module: "Module 14",
+                    title: "Options Strategies - Directional",
+                    description:
+                      "Directional strategies to profit from bullish or bearish trends.",
+                    highlights: [
+                      "Long call",
+                      "Long put",
+                      "Spreads",
+                      "Protective strategies",
+                    ],
+                    outcome:
+                      "Profit from clear market directions using options.",
+                  },
+                  {
+                    module: "Module 15",
+                    title: "Options Strategies - Non-Directional (Selling)",
+                    description:
+                      "Generate income from neutral or range-bound markets.",
+                    highlights: [
+                      "Iron condor",
+                      "Straddles",
+                      "Strangles",
+                      "Credit spreads",
+                    ],
+                    outcome: "Earn consistent income in sideways markets.",
+                  },
+                  {
+                    module: "Module 16",
+                    title: "Advanced Greeks & Strategy Optimization",
+                    description:
+                      "Master options greeks for advanced risk management.",
+                    highlights: ["Delta", "Gamma", "Theta", "Vega"],
+                    outcome:
+                      "Control risk like a pro using advanced option Greeks.",
+                  },
+                  {
+                    module: "Module 17",
+                    title: "Building Your Own Trading System",
+                    description:
+                      "Create a personal trading plan and test strategies.",
+                    highlights: [
+                      "Backtesting",
+                      "Rules creation",
+                      "Automation basics",
+                      "System optimization",
+                    ],
+                    outcome:
+                      "Have your very own trading system ready for execution.",
+                  },
+                  {
+                    module: "Module 18",
+                    title: "Live Market Analysis & Practice",
+                    description: "Apply everything with live trading examples.",
+                    highlights: [
+                      "Real trades",
+                      "Case studies",
+                      "Market review",
+                      "Hands-on practice",
+                    ],
+                    outcome:
+                      "Step into the real market with guided live experience.",
+                  },
+                ].map((module, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                  >
+                    {/* Module Title */}
+                    <div className="flex flex-wrap items-center gap-3 mb-3 sm:mb-4">
+                      <div className="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                        {module.module}
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                        {module.title}
+                      </h3>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900">
-                      {module.title}
-                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-700 text-sm sm:text-base mb-4">
+                      {module.description}
+                    </p>
+
+                    {/* Outcome */}
+                    <p className="text-emerald-600 font-semibold text-sm sm:text-base mb-3">
+                      🎯 {module.outcome}
+                    </p>
+
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-2">
+                      {module.highlights.map((highlight, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full text-xs sm:text-sm"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  {/* Description */}
-                  <p className="text-gray-700 text-sm sm:text-base mb-4">
-                    {module.description}
-                  </p>
-
-                  {/* Outcome */}
-                  <p className="text-emerald-600 font-semibold text-sm sm:text-base mb-3">
-                    🎯 {module.outcome}
-                  </p>
-
-                  {/* Highlights */}
-                  <div className="flex flex-wrap gap-2">
-                    {module.highlights.map((highlight, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full text-xs sm:text-sm"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
