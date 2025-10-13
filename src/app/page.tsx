@@ -125,9 +125,7 @@ const Hero: React.FC = () => {
           <Link
             href="https://pelglp.courses.store/691872"
             className="absolute inset-0 z-20"
-          >
-            <span className="sr-only">Go to Course Page</span>
-          </Link>
+          ></Link>
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-purple-500/30 to-pink-400/30 animate-[gradientShift_18s_linear_infinite] mix-blend-overlay" />
 
