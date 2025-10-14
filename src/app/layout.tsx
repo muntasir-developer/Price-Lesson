@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/NavbarWrapper";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,22 @@ export default function RootLayout({
       >
         <NavbarWrapper />
         {children}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              backdropFilter: "blur(15px)", // stronger blur for glass effect
+              background: "rgba(255, 255, 255, 0.1)", // very transparent white
+              color: "#ffffff", // white text
+              borderRadius: "12px", // rounded corners
+              padding: "16px 24px", // spacing inside toast
+              boxShadow: "0 8px 32px rgba(0,0,0,0.25)", // subtle shadow
+              border: "1px solid rgba(255,255,255,0.6)", // white semi-transparent border
+              fontWeight: "500", // medium font
+            },
+          }}
+        />
       </body>
     </html>
   );

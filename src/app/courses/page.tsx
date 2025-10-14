@@ -1210,7 +1210,7 @@ export default function TradingCourseLanding() {
                   <div className="flex items-center justify-center lg:justify-start space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                     <span className="text-red-600 font-bold text-xs sm:text-sm uppercase tracking-wider">
-                      LIMITED TIME OFFER
+                      DIWALI OFFER
                     </span>
                   </div>
 
@@ -1500,7 +1500,7 @@ export default function TradingCourseLanding() {
                   {/* Offer Text */}
                   <div className="text-center sm:text-left">
                     <p className="font-semibold text-lg text-green-600 drop-shadow-md">
-                      🚀 Limited Offer:{" "}
+                      🚀 Diwali Offer:{" "}
                       <span className="text-orange-400">₹4,999 Only!</span>
                     </p>
                     <p className="text-sm sm:text-base text-blue-600 drop-shadow-md">

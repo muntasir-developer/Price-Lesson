@@ -14,6 +14,7 @@ import {
   Instagram,
   Facebook,
 } from "lucide-react";
+import toast from "react-hot-toast";
 import Footer from "@/components/Footer";
 
 // Define form data interface
@@ -39,12 +40,24 @@ export default function ContactPage(): React.ReactElement {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission - replace with actual API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // 👇 Send data to your Next.js API route
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      console.log("Form submitted:", formData);
-      alert("Thank you for your message! We'll get back to you soon.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      const result = await res.json();
+
+      if (res.ok) {
+        console.log("Form submitted:", result);
+        toast.success("Thank you! We'll get back to you soon.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        alert(result.error || "Something went wrong. Please try again.");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       alert(
