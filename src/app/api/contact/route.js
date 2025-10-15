@@ -3,6 +3,9 @@ import nodemailer from "nodemailer";
 import validator from "validator";
 
 export async function POST(request) {
+  const userEmail = process.env.EMAIL_USER;
+  const userPass = process.env.EMAIL_PASS;
+  console.log(userEmail, userPass);
   try {
     const data = await request.json();
     let { name, email, subject, message } = data;
