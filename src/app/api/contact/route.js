@@ -42,15 +42,16 @@ export async function POST(request) {
 
     // ✅ Mail options
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: `"Website Contact" <${process.env.EMAIL_USER}>`, // ✅ Changed
       to: process.env.EMAIL_USER,
-      subject,
+      subject: `New message from ${name} - ${subject}`, // ✅ Improved
       html: `
         <p><b>Name:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
+        <p><b>Email:</b> <a href="mailto:${email}">${email}</a></p>  // ✅ Clickable email link
         <p><b>Subject:</b> ${subject}</p>
-        <p><b>Message:</b><br/>${message}</p>
+        <p><b>Message:</b><br>${message}</p>
       `,
+      replyTo: email, // ✅ Added
     };
 
     // ✅ Send email
