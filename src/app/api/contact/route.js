@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 import validator from "validator";
 
 export async function POST(request) {
+  console.log("USER:", process.env.EMAIL_USER ? "✅ set" : "❌ missing");
+  console.log("PASS:", process.env.EMAIL_PASS ? "✅ set" : "❌ missing");
   try {
     const data = await request.json();
     let { name, email, subject, message } = data;
@@ -26,8 +28,6 @@ export async function POST(request) {
     }
 
     // ✅ Check environment variables
-    console.log("USER:", process.env.EMAIL_USER ? "✅ set" : "❌ missing");
-    console.log("PASS:", process.env.EMAIL_PASS ? "✅ set" : "❌ missing");
 
     // ✅ Create transporter
     const transporter = nodemailer.createTransport({
