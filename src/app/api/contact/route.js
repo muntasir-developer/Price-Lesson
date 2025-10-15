@@ -3,17 +3,17 @@ import nodemailer from "nodemailer";
 import validator from "validator";
 
 export async function POST(request) {
-  const userEmail = process.env.EMAIL_USER;
-  const userPass = process.env.EMAIL_PASS;
-  console.log(userEmail, userPass);
+  console.log("USER:", process.env.EMAIL_USER ? "✅ set" : "❌ missing");
+  console.log("PASS:", process.env.EMAIL_PASS ? "✅ set" : "❌ missing");
+
   try {
     const data = await request.json();
     let { name, email, subject, message } = data;
 
-    // ✅ Check required fields
+    // ✅ Validate required fields
     if (!name || !email || !message) {
       return Response.json(
-        { error: "All required fields are missing" },
+        { error: "Name, email, and message are required" },
         { status: 400 }
       );
     }
@@ -24,7 +24,7 @@ export async function POST(request) {
     subject = subject ? validator.escape(subject.trim()) : "No Subject";
     message = validator.escape(message.trim());
 
-    // ✅ Validate email
+    // ✅ Validate email format
     if (!validator.isEmail(email)) {
       return Response.json({ error: "Invalid email address" }, { status: 400 });
     }
@@ -42,19 +42,22 @@ export async function POST(request) {
 
     // ✅ Prepare mail options
     const mailOptions = {
-      from: `"${name}" <${email}>`,
+      from: process.env.EMAIL_USER,
+      replyTo: email,
       to: process.env.EMAIL_USER,
-      subject: subject,
+      subject,
       text: message,
-      html: `<p><b>Name:</b> ${name}</p>
-             <p><b>Email:</b> ${email}</p>
-             <p><b>Subject:</b> ${subject}</p>
-             <p><b>Message:</b> ${message}</p>`,
+      html: `
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Subject:</b> ${subject}</p>
+        <p><b>Message:</b> ${message}</p>
+      `,
     };
 
     // ✅ Send email
     const emailSend = await transporter.sendMail(mailOptions);
-    console.log(emailSend);
+    console.log("Email sent:", emailSend.messageId);
 
     return Response.json({
       success: true,
