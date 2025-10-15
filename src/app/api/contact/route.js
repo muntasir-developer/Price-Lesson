@@ -1,3 +1,4 @@
+"use server";
 import nodemailer from "nodemailer";
 import validator from "validator";
 
@@ -49,7 +50,8 @@ export async function POST(request) {
     };
 
     // ✅ Send email
-    await transporter.sendMail(mailOptions);
+    const emailSend = await transporter.sendMail(mailOptions);
+    console.log(emailSend);
 
     return Response.json({
       success: true,
