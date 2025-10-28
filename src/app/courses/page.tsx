@@ -619,14 +619,6 @@ export default function TradingCourseLanding() {
 
                   <div className="flex items-center justify-between space-x-3">
                     <div className="flex items-center space-x-3">
-                      <BookOpen className="h-5 w-5 text-emerald-600" />
-                      <span>Ultimate Trading Playbook</span>
-                    </div>
-                    <span className="font-semibold text-gray-700">₹2,999</span>
-                  </div>
-
-                  <div className="flex items-center justify-between space-x-3">
-                    <div className="flex items-center space-x-3">
                       <Users className="h-5 w-5 text-red-600" />
                       <span>VIP Private Community Access</span>
                     </div>
@@ -672,13 +664,13 @@ export default function TradingCourseLanding() {
                 <div className="mt-8 p-6 bg-white rounded-2xl border border-emerald-300 text-center">
                   <div className="text-sm text-gray-600">Total Value</div>
                   <div className="text-2xl sm:text-3xl font-bold text-gray-400 line-through">
-                    ₹15,999
+                    ₹12,999
                   </div>
                   <div className="text-3xl sm:text-4xl font-bold text-emerald-600 mt-1">
                     Offer Price: ₹4,999
                   </div>
                   <p className="text-red-700 font-semibold text-sm sm:text-base">
-                    You Save ₹10,999!
+                    You Save ₹7,999!
                   </p>
 
                   <button
