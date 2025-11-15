@@ -172,17 +172,6 @@ export default function TradingCourseLanding() {
         <section className="relative overflow-hidden pb-16 px-4 sm:px-6 lg:px-8">
           {/* Futuristic Background */}
           <div className="absolute inset-0 -z-10">
-            {/* Gradient Grid Overlay */}
-            <div
-              className="absolute inset-0 opacity-25"
-              style={{
-                backgroundImage: `
-          linear-gradient(rgba(16,185,129,0.15) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(59,130,246,0.15) 1px, transparent 1px)
-        `,
-                backgroundSize: "60px 60px",
-              }}
-            />
             {/* Glowing Orbs */}
             <div className="absolute top-10 left-10 w-60 sm:w-80 h-60 sm:h-80 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-10 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -215,38 +204,59 @@ export default function TradingCourseLanding() {
 
             <Link
               href="https://pelglp.courses.store/691872"
-              className="hidden sm:inline-flex 
-               bg-gradient-to-r from-emerald-400/30 via-teal-400/30 to-blue-500/30
-               backdrop-blur-md border border-cyan-300/30 
-               text-white px-6 py-3 rounded-full text-base font-semibold 
-               transition-all duration-300 
-               hover:from-emerald-400/50 hover:via-teal-500/50 hover:to-blue-600/50 
-               hover:scale-105 
-               shadow-lg hover:shadow-[0_0_20px_rgba(34,197,94,0.5),0_0_30px_rgba(59,130,246,0.5)] relative z-50"
+              className="
+    hidden sm:inline-flex
+    relative overflow-hidden
+    items-center justify-center
+    bg-orange-500
+    text-white px-6 py-3 rounded-full text-base font-semibold
+    transition-all duration-300
+    hover:scale-105
+    shadow-lg 
+    hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_30px_rgba(255,140,0,0.6)]
+    border border-orange-300/40
+  "
             >
-              Get Started
+              {/* Shine Effect */}
+              <span
+                className="
+      absolute top-10 left-0 h-[35%] w-[120%]
+      bg-white opacity-50
+      blur-[12px]
+      pointer-events-none
+      animate-diagonal-shine
+      rotate-[22deg]
+    "
+              ></span>
+
+              <span className="relative z-10">Get Started</span>
             </Link>
           </div>
 
           {/* Hero Content */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12  lg:gap-16 relative pt-10 lg:pb-0 pb-[60vh] sm:pt-14 items-center">
+            <div className="grid lg:grid-cols-2 gap-12  lg:gap-x-52 relative pt-10 lg:pb-0 pb-[60vh] sm:pt-14 items-center">
               {/* Left Content */}
-              <div className="space-y-8 text-center lg:text-left">
+              <div className="space-y-8 text-center lg:text-left font-poppins">
                 {/* Headline */}
-                <div className="space-y-4">
-                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 drop-shadow-sm">
+                <div className="space-y-0">
+                  <h1 className="lg:text-[39px] relative right-14 lg:right-0 text-2xl lg:leading-none leading-6 uppercase font-bold text-blue-700">
                     The Complete
-                    <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-orange-500 bg-clip-text text-transparent">
-                      {" "}
-                      Stock Market{" "}
-                    </span>
+                  </h1>
+                  <h1
+                    className="text-5xl sm:text-5xl lg:text-[5.4rem] uppercase leading-tighter
+                   lg:leading-18  drop-shadow-sm font-anton tracking-normal relative lg:right-0 right-3 text-green-700 "
+                  >
+                    {" "}
+                    Stock Market{" "}
+                  </h1>
+                  <h1 className="lg:text-[3rem] text-2xl relative right-17 lg:right-0 font-anton leading-tight tracking-wide  font-extrabold text-orange-600">
                     Trading Course
                   </h1>
 
                   {/* Bullet Points */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 group pr-4 lg-pr-0 justify-center lg:justify-start">
+                  <div className="space-y-4 font-poppins top-2 relative">
+                    <div className="flex items-center gap-4 group pr-4 lg:pr-0 justify-center lg:justify-start">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
@@ -264,7 +274,7 @@ export default function TradingCourseLanding() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-4 group  ml-12 lg:ml-0  lg:justify-start">
+                    <div className="flex items-center gap-4 group relative left-12  lg:left-0 lg:justify-start">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-green-600 to-green-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
@@ -276,7 +286,7 @@ export default function TradingCourseLanding() {
                 </div>
 
                 {/* Highlights */}
-                <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4 text-sm">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4 text-sm font-poppins">
                   <div className="flex items-center space-x-2 bg-white/70 backdrop-blur-md border border-gray-200 px-3 sm:px-4 py-2 rounded-full shadow-md">
                     <Users className="h-4 w-4 text-emerald-600" />
                     <span className="text-gray-800 flex items-center justify-center gap-2">
@@ -286,14 +296,16 @@ export default function TradingCourseLanding() {
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path d="M23.498 6.186a2.97 2.97 0 0 0-2.09-2.096C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.408.59a2.97 2.97 0 0 0-2.09 2.096A31.04 31.04 0 0 0 0 12a31.04 31.04 0 0 0 .502 5.814 2.97 2.97 0 0 0 2.09 2.096C4.4 20.5 12 20.5 12 20.5s7.6 0 9.408-.59a2.97 2.97 0 0 0 2.09-2.096A31.04 31.04 0 0 0 24 12a31.04 31.04 0 0 0-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        <path d="M23.498 6.186a2.97 ..." />
                       </svg>
                     </span>
                   </div>
+
                   <div className="flex items-center space-x-2 bg-white/70 backdrop-blur-md border border-gray-200 px-3 sm:px-4 py-2 rounded-full shadow-md">
                     <Star className="h-4 w-4 text-yellow-500" />
                     <span className="text-gray-800">4.9/5 Rating</span>
                   </div>
+
                   <div className="flex items-center space-x-2 bg-white/70 backdrop-blur-md border border-gray-200 px-3 sm:px-4 py-2 rounded-full shadow-md">
                     <Clock className="h-4 w-4 text-blue-600" />
                     <span className="text-gray-800">4 years+ Experience</span>
@@ -301,17 +313,40 @@ export default function TradingCourseLanding() {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start font-poppins">
                   <button
                     onClick={() =>
                       (window.location.href =
                         "https://pelglp.courses.store/691872")
                     }
-                    className="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105  shadow-[0_0_8px_0.01px_orange] flex items-center  justify-center space-x-2"
+                    className="
+    relative overflow-hidden
+    text-white font-semibold
+    px-10 sm:px-12 py-4 sm:py-5
+    rounded-full text-lg sm:text-xl
+    shadow-lg hover:shadow-xl
+    transition-all duration-300
+    hover:scale-[1.04]
+    flex items-center justify-center
+    bg-orange-500
+  "
                   >
-                    <Play className="h-5 w-5" />
-                    <span>Start Learning Now</span>
+                    {/* Diagonal Shine Effect */}
+                    <span
+                      className="
+      absolute top-10 left-0 h-[30%] w-[90%]
+      bg-white
+      blur-[20px]
+      opacity-100
+      pointer-events-none
+      animate-diagonal-shine
+      rotate-[20deg]
+    "
+                    ></span>
+
+                    <span className="relative z-10">Start Learning Now</span>
                   </button>
+
                   <button className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm">
                     Watch Demo
                   </button>
@@ -334,15 +369,47 @@ export default function TradingCourseLanding() {
                 </div>
               </div>
               {/* Desktop View (b) */}
-              <div className="hidden lg:flex lg:w-[40vw] min-[1900px]:h-[200vh] lg:overflow-hidden min-[1920px]:translate-x-8 min-[1920px]:translate-y-16 lg:h-[57vw] bg-gradient-to-r via-green-400 to-orange-400 rounded-[10rem] relative lg:absolute lg:rotate-[50deg] lg:right-[-10vw] lg:bottom-16 border-r-4 border-blue-400">
-                <Image
-                  src="/image/monazir.png" // optimized format
-                  alt="Stock Trading Illustration"
-                  width={800}
-                  height={800}
-                  priority // eager load
-                  className="object-contain rotate-[-53deg] min-[1920px]:translate-y-16 min-[1920px]:translate-x-24 lg:pt-24 relative lg:bottom-[-4rem] lg:right-8 lg:top-28 lg:mr-52"
-                />
+              <div className="hidden lg:flex w-[36vw] aspect-square justify-center items-center relative">
+                {/* Outer dual-tone halo */}
+                <div
+                  className="absolute inset-0 rounded-full animate-spin-slower"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, #b3e5fc, #80deea, #26c6da, #00acc1, #26c6da, #80deea, #b3e5fc)",
+                    padding: "6px",
+                    filter: "blur(2px) opacity(0.65)",
+                  }}
+                ></div>
+
+                {/* Soft frosted glass frame */}
+                <div
+                  className="relative w-full h-full rounded-full overflow-hidden backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                  style={{
+                    border: "10px solid rgba(255,255,255,0.45)",
+                    background:
+                      "linear-gradient(135deg, rgba(255,255,255,0.7), rgba(240,240,240,0.25))",
+                  }}
+                >
+                  {/* Shimmer ring */}
+                  <div
+                    className="absolute inset-0 rounded-full animate-shimmer"
+                    style={{
+                      background:
+                        "conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.8) 15%, transparent 30%)",
+                      mixBlendMode: "overlay",
+                    }}
+                  ></div>
+
+                  {/* Image */}
+                  <Image
+                    src="/image/monazirbh.jpg"
+                    alt="Stock Trading Illustration"
+                    width={960}
+                    height={960}
+                    priority
+                    className="object-cover w-full h-full rounded-full"
+                  />
+                </div>
               </div>
               . .
               <div className="hidden lg:block">
@@ -677,11 +744,35 @@ export default function TradingCourseLanding() {
                     onClick={() =>
                       router.push("https://pelglp.courses.store/691872")
                     }
-                    className="mt-6 w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-emerald-600 to-blue-600 text-white text-lg font-semibold rounded-full shadow-lg hover:from-emerald-700 hover:to-blue-700 transition-all"
+                    className="
+    mt-6 w-full sm:w-auto px-8 py-3 
+    bg-orange-500 
+    text-white text-lg font-semibold 
+    rounded-full shadow-lg 
+    transition-all duration-300
+    hover:scale-[1.05]
+    hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_30px_rgba(255,140,0,0.6)]
+    relative overflow-hidden
+  "
                   >
-                    🚀 Enroll Now{" "}
-                    <span className="hidden lg:inline">
-                      –Transform Your Trading
+                    {/* Shine Effect */}
+                    <span
+                      className="
+      absolute top-10 left-0 h-[35%] w-[120%]
+      bg-white opacity-40
+      blur-[12px]
+      pointer-events-none
+      animate-diagonal-shine
+      rotate-[22deg]
+    "
+                    ></span>
+
+                    <span className="relative z-10">
+                      🚀 Enroll Now
+                      <span className="hidden lg:inline">
+                        {" "}
+                        – Transform Your Trading
+                      </span>
                     </span>
                   </button>
                 </div>
@@ -1286,11 +1377,36 @@ export default function TradingCourseLanding() {
                     onClick={() =>
                       router.push("https://pelglp.courses.store/691872")
                     }
-                    className="group w-full sm:w-auto bg-gradient-to-r from-red-600 via-purple-600 to-cyan-600 hover:from-red-700 hover:via-purple-700 hover:to-cyan-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl font-bold text-lg sm:text-xl transition-all transform hover:scale-105 shadow-md flex items-center justify-center space-x-3"
+                    className="
+    group w-full sm:w-auto 
+    bg-orange-500
+    hover:bg-orange-600
+    text-white px-6 sm:px-10 py-3 sm:py-4 
+    rounded-2xl font-bold text-lg sm:text-xl 
+    transition-all duration-300 transform 
+    hover:scale-105 
+    shadow-md 
+    hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_35px_rgba(255,140,0,0.6)]
+    flex items-center justify-center space-x-3
+    relative overflow-hidden
+  "
                   >
-                    <AlertCircle className="h-5 w-5 animate-pulse" />
-                    <span>Enroll Now & Unlock Access</span>
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    {/* Shine Effect */}
+                    <span
+                      className="
+      absolute top-10 left-0 h-[40%] w-[130%]
+      bg-white opacity-35 blur-[12px]
+      pointer-events-none
+      rotate-[22deg]
+      animate-diagonal-shine
+    "
+                    ></span>
+
+                    <AlertCircle className="h-5 w-5 animate-pulse relative z-10" />
+                    <span className="relative z-10">
+                      Enroll Now & Unlock Access
+                    </span>
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
                   </button>
 
                   <div className="text-center lg:text-right text-xs sm:text-sm text-gray-600">
@@ -1503,13 +1619,33 @@ export default function TradingCourseLanding() {
                   {/* CTA Button */}
                   <Link
                     href="https://pelglp.courses.store/691872"
-                    className="relative inline-block px-6 py-3 font-bold text-sm text-white rounded-xl
-                 bg-gradient-to-r from-emerald-600 to-blue-600
-                 bg-white/20 backdrop-blur-md border border-white/30 shadow-lg
-                 hover:scale-105 hover:from-emerald-700 hover:to-blue-700 hover:shadow-xl
-                 transition-all duration-300"
+                    className="
+    relative inline-block px-6 py-3 
+    font-bold text-sm text-white rounded-xl
+    bg-orange-500
+    border border-orange-300/40
+    shadow-lg
+    transition-all duration-300
+    hover:bg-orange-600
+    hover:scale-105
+    hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_35px_rgba(255,140,0,0.6)]
+    overflow-hidden
+  "
                   >
-                    Enroll Now – Start Your Trading Journey
+                    {/* Shine Effect */}
+                    <span
+                      className="
+      absolute top-10 left-0 h-[35%] w-[120%]
+      bg-white opacity-35 blur-[10px]
+      pointer-events-none
+      animate-diagonal-shine
+      rotate-[22deg]
+    "
+                    ></span>
+
+                    <span className="relative z-10">
+                      Enroll Now – Start Your Trading Journey
+                    </span>
                   </Link>
                 </div>
               </div>
