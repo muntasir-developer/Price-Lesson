@@ -194,12 +194,29 @@ export default function TradingCourseLanding() {
             {/* CTA Button (Mobile: inline, Desktop: right side) */}
             <Link
               href="https://pelglp.courses.store/691872"
-              className="absolute z-50 inline-flex sm:hidden 
-               bg-gradient-to-r from-emerald-500 to-blue-600
-               text-white right-4  px-4 py-2 rounded-full text-sm font-semibold 
-               shadow-md hover:scale-105 transition-all"
+              className="absolute z-50 inline-flex sm:hidden
+              overflow-hidden
+             bg-orange-500
+             text-white right-4 px-4 py-2 rounded-full text-sm font-semibold
+             transition-all duration-300
+             hover:scale-105
+             shadow-lg
+             hover:shadow-[0_0_20px_rgba(16,185,129,0.5),0_0_30px_rgba(37,99,235,0.6)]
+             border border-white/20"
             >
-              Get Started
+              {/* Shine Effect */}
+              <span
+                className="
+      absolute top-8 left-0 h-[40%] w-[130%]
+      bg-white opacity-50
+      blur-[10px]
+      pointer-events-none
+      animate-diagonal-shine
+      rotate-[22deg]
+    "
+              ></span>
+
+              <span className="relative z-10">Get Started</span>
             </Link>
 
             <Link
@@ -722,7 +739,7 @@ export default function TradingCourseLanding() {
                       Total Premium Value
                     </span>
                     <span className="font-bold text-lg text-green-600">
-                      ₹15,999
+                      ₹12,999
                     </span>
                   </div>
                 </div>
@@ -734,10 +751,10 @@ export default function TradingCourseLanding() {
                     ₹12,999
                   </div>
                   <div className="text-3xl sm:text-4xl font-bold text-emerald-600 mt-1">
-                    Offer Price: ₹4,999
+                    Offer Price: ₹2999
                   </div>
                   <p className="text-red-700 font-semibold text-sm sm:text-base">
-                    You Save ₹7,999!
+                    You Save ₹9,999!
                   </p>
 
                   <button
@@ -1293,7 +1310,7 @@ export default function TradingCourseLanding() {
                   <div className="flex items-center justify-center lg:justify-start space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                     <span className="text-red-600 font-bold text-xs sm:text-sm uppercase tracking-wider">
-                      DIWALI OFFER
+                      Special Offer
                     </span>
                   </div>
 
@@ -1303,7 +1320,7 @@ export default function TradingCourseLanding() {
                     </span>{" "}
                     Master Stock Market{" "}
                     <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
-                      70% OFF Today
+                      76% OFF Today
                     </span>
                   </h3>
 
@@ -1366,10 +1383,10 @@ export default function TradingCourseLanding() {
                       <span className="line-through text-gray-500 text-lg sm:text-xl">
                         ₹15,999
                       </span>
-                      <span className="text-emerald-600 ml-2">₹4,999</span>
+                      <span className="text-emerald-600 ml-2">₹2,999</span>
                     </div>
                     <div className="text-sm sm:text-base text-gray-600">
-                      Save ₹10,999 Today!
+                      Save ₹9,999 Today!
                     </div>
                   </div>
 
@@ -1608,8 +1625,8 @@ export default function TradingCourseLanding() {
                   {/* Offer Text */}
                   <div className="text-center sm:text-left">
                     <p className="font-semibold text-lg text-green-600 drop-shadow-md">
-                      🚀 Diwali Offer:{" "}
-                      <span className="text-orange-400">₹4,999 Only!</span>
+                      🚀 Special Offer:{" "}
+                      <span className="text-orange-400">₹2,999 Only!</span>
                     </p>
                     <p className="text-sm sm:text-base text-blue-600 drop-shadow-md">
                       Save ₹10,999 – Complete Stock Trading Course
