@@ -386,7 +386,7 @@ export default function TradingCourseLanding() {
                 </div>
               </div>
               {/* Desktop View (b) */}
-              <div className="hidden lg:flex w-[36vw] aspect-square justify-center items-center relative">
+              <div className="hidden lg:flex w-[600px] aspect-square justify-center items-center relative">
                 {/* Outer dual-tone halo */}
                 <div
                   className="absolute inset-0 rounded-full animate-spin-slower"
