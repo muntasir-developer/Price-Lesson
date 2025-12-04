@@ -360,7 +360,7 @@ export default function TradingCourseLanding() {
                         "
                       ></span>
 
-                      <span className="relative z-20">Start Learning Now</span>
+                      <span className="relative z-20">Enroll Course Now!</span>
                     </button>
 
 
@@ -713,7 +713,7 @@ export default function TradingCourseLanding() {
                   <div className="flex items-center justify-between space-x-3">
                     <div className="flex items-center space-x-3">
                       <CalendarIcon className="h-5 w-5 text-yellow-600" />
-                      <span>Weekly Live Strategy Sessions</span>
+                      <span>Weekly Live Doubt Sessions</span>
                     </div>
                     <span className="font-semibold text-gray-700">₹2,199</span>
                   </div>
@@ -1382,7 +1382,7 @@ export default function TradingCourseLanding() {
                   <div className="text-center lg:text-right">
                     <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">
                       <span className="line-through text-gray-500 text-lg sm:text-xl">
-                        ₹15,999
+                        ₹12,999
                       </span>
                       <span className="text-emerald-600 ml-2">₹2,999</span>
                     </div>
