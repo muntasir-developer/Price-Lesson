@@ -331,38 +331,39 @@ export default function TradingCourseLanding() {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start font-poppins">
-                  <button
-                    onClick={() =>
-                      (window.location.href =
-                        "https://pelglp.courses.store/691872")
-                    }
-                    className="
-    relative overflow-hidden
-    text-white font-semibold
-    px-10 sm:px-12 py-4 sm:py-5
-    rounded-full text-lg sm:text-xl
-    shadow-lg hover:shadow-xl
-    transition-all duration-300
-    hover:scale-[1.04]
-    flex items-center justify-center
-    bg-orange-500
-  "
-                  >
-                    {/* Diagonal Shine Effect */}
-                    <span
+                <button
+                      onClick={() => router.push("https://pelglp.courses.store/691872")}
                       className="
-      absolute top-10 left-0 h-[30%] w-[90%]
-      bg-white
-      blur-[20px]
-      opacity-100
-      pointer-events-none
-      animate-diagonal-shine
-      rotate-[20deg]
-    "
-                    ></span>
+                        relative overflow-hidden
+                        text-white font-semibold
+                        px-10 sm:px-12 py-4 sm:py-5
+                        rounded-full text-lg sm:text-xl
+                        shadow-lg hover:shadow-xl
+                        transition-all duration-300
+                        hover:scale-[1.04]
+                        flex items-center justify-center
+                        bg-orange-500
+                        z-10
+                      "
+                    >
+                      {/* Diagonal Shine Effect */}
+                      <span
+                        className="
+                          absolute top-10 left-0 h-[30%] w-[90%]
+                          bg-white
+                          blur-[20px]
+                          opacity-100
+                          pointer-events-none
+                          animate-diagonal-shine
+                          rotate-[20deg]
+                          z-0
+                        "
+                      ></span>
 
-                    <span className="relative z-10">Start Learning Now</span>
-                  </button>
+                      <span className="relative z-20">Start Learning Now</span>
+                    </button>
+
+
 
                   <button className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm">
                     Watch Demo
@@ -1629,7 +1630,7 @@ export default function TradingCourseLanding() {
                       <span className="text-orange-400">₹2,999 Only!</span>
                     </p>
                     <p className="text-sm sm:text-base text-blue-600 drop-shadow-md">
-                      Save ₹10,999 – Complete Stock Trading Course
+                      Save ₹9,999 – Complete Stock Trading Course
                     </p>
                   </div>
 
