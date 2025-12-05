@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Lenis from "lenis";
+import { fbq } from "@/components/Fpixel";
 
 import StockMarketCourseSection from "@/components/Course";
 import FAQSection from "@/components/Faq";
