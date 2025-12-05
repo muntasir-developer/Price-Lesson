@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { fbq } from "@/components/Fpixel";
 
 import {
   ChevronDown,
@@ -194,6 +195,7 @@ export default function TradingCourseLanding() {
             {/* CTA Button (Mobile: inline, Desktop: right side) */}
             <Link
               href="https://pelglp.courses.store/691872"
+              onClick={() => fbq("track", "GetStartedClick")}
               className="absolute z-50 inline-flex sm:hidden
               overflow-hidden
              bg-orange-500
@@ -221,6 +223,7 @@ export default function TradingCourseLanding() {
 
             <Link
               href="https://pelglp.courses.store/691872"
+              onClick={() => fbq("track", "GetStartedClick")}
               className="
     hidden sm:inline-flex
     relative overflow-hidden
@@ -332,7 +335,7 @@ export default function TradingCourseLanding() {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start font-poppins">
                 <button
-                      onClick={() => router.push("https://pelglp.courses.store/691872")}
+                      onClick={() => { fbq('track', 'Enroll Course Now Click'); router.push("https://pelglp.courses.store/691872") }}
                       className="
                         relative overflow-hidden
                         text-white font-semibold
@@ -365,7 +368,7 @@ export default function TradingCourseLanding() {
 
 
 
-                  <button className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm">
+                  <button onClick={() => fbq("track","WatchDemoClick")} className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm">
                     Watch Demo
                   </button>
                 </div>
@@ -759,9 +762,10 @@ export default function TradingCourseLanding() {
                   </p>
 
                   <button
-                    onClick={() =>
-                      router.push("https://pelglp.courses.store/691872")
-                    }
+                    onClick={() => {
+                      fbq("track", "Enroll Now Click");
+                      router.push("https://pelglp.courses.store/691872");
+                    }}
                     className="
     mt-6 w-full sm:w-auto px-8 py-3 
     bg-orange-500 
@@ -1327,7 +1331,7 @@ export default function TradingCourseLanding() {
 
                   <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                     Transform from beginner to confident trader with 40+ HD
-                    lessons, weekly live sessions, personalized insights, and
+                    lessons, weekly live doubt sessions, personalized insights, and
                     lifetime access.
                   </p>
 
@@ -1392,9 +1396,10 @@ export default function TradingCourseLanding() {
                   </div>
 
                   <button
-                    onClick={() =>
-                      router.push("https://pelglp.courses.store/691872")
-                    }
+                    onClick={() => {
+                      fbq("track", "Enroll Now & Unlock Access Click");
+                      router.push("https://pelglp.courses.store/691872");
+                    }}
                     className="
     group w-full sm:w-auto 
     bg-orange-500
@@ -1636,6 +1641,10 @@ export default function TradingCourseLanding() {
 
                   {/* CTA Button */}
                   <Link
+                    onClick={() => {
+                      fbq("track", " Enroll Now – Start Your Trading Journey Click");
+                      
+                    }}
                     href="https://pelglp.courses.store/691872"
                     className="
     relative inline-block px-6 py-3 
