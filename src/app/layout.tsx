@@ -43,10 +43,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  ${anton.variable} ${poppins.variable}`}
-      >
-         <Script id="fb-pixel" strategy="afterInteractive">
+      <head>
+        <meta
+          name="facebook-domain-verification"
+          content="p051ipis68nmz3ndd9thhuj8alaa9b"
+        />
+
+        {/* Meta Pixel */}
+        <Script id="facebook-pixel" strategy="beforeInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -60,14 +64,20 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
+
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=1371555451046475&ev=PageView&noscript=1`}
+            src="https://www.facebook.com/tr?id=1371555451046475&ev=PageView&noscript=1"
           />
         </noscript>
+      </head>
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  ${anton.variable} ${poppins.variable}`}
+      >
         <NavbarWrapper />
         {children}
         <Analytics />
