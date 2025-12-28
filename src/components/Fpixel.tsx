@@ -1,11 +1,17 @@
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void;
-  }
-}
+"use client";
 
-export const fbq = (...args: any[]) => {
-  if (typeof window !== "undefined" && typeof window.fbq === "function") {
-    window.fbq(...args);
-  }
-};
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Fpixel() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "PageView");
+    }
+  }, [pathname, searchParams]);
+
+  return null;
+}
