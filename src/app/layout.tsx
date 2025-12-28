@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Anton, Poppins } from "next/font/google";
 import Script from "next/script";
 import Fpixel from "@/components/Fpixel";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const anton = Anton({
   weight: "400",
@@ -80,6 +81,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased  ${anton.variable} ${poppins.variable}`}
       >
         <Fpixel />
+        <GoogleAnalytics />
         <NavbarWrapper />
         {children}
         <Analytics />
