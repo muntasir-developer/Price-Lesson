@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import { Anton, Poppins } from "next/font/google";
 import Script from "next/script";
+import Fpixel from "@/components/Fpixel";
 
 const anton = Anton({
   weight: "400",
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased  ${anton.variable} ${poppins.variable}`}
       >
+        <Fpixel />
         <NavbarWrapper />
         {children}
         <Analytics />

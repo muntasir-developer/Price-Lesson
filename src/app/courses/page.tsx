@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { fbq } from "@/components/Fpixel";
-
+import { fbq } from "@/components/fpixel";
 import {
   ChevronDown,
   PlayCircle,
@@ -334,9 +333,12 @@ export default function TradingCourseLanding() {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start font-poppins">
-                <button
-                      onClick={() => { fbq('track', 'Enroll Course Now Click'); router.push("https://pelglp.courses.store/691872") }}
-                      className="
+                  <button
+                    onClick={() => {
+                      fbq("track", "Enroll Course Now Click");
+                      router.push("https://pelglp.courses.store/691872");
+                    }}
+                    className="
                         relative overflow-hidden
                         text-white font-semibold
                         px-10 sm:px-12 py-4 sm:py-5
@@ -348,10 +350,10 @@ export default function TradingCourseLanding() {
                         bg-orange-500
                         z-10
                       "
-                    >
-                      {/* Diagonal Shine Effect */}
-                      <span
-                        className="
+                  >
+                    {/* Diagonal Shine Effect */}
+                    <span
+                      className="
                           absolute top-10 left-0 h-[30%] w-[90%]
                           bg-white
                           blur-[20px]
@@ -361,14 +363,15 @@ export default function TradingCourseLanding() {
                           rotate-[20deg]
                           z-0
                         "
-                      ></span>
+                    ></span>
 
-                      <span className="relative z-20">Enroll Course Now!</span>
-                    </button>
+                    <span className="relative z-20">Enroll Course Now!</span>
+                  </button>
 
-
-
-                  <button onClick={() => fbq("track","WatchDemoClick")} className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm">
+                  <button
+                    onClick={() => fbq("track", "WatchDemoClick")}
+                    className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm"
+                  >
                     Watch Demo
                   </button>
                 </div>
@@ -1331,8 +1334,8 @@ export default function TradingCourseLanding() {
 
                   <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                     Transform from beginner to confident trader with 40+ HD
-                    lessons, weekly live doubt sessions, personalized insights, and
-                    lifetime access.
+                    lessons, weekly live doubt sessions, personalized insights,
+                    and lifetime access.
                   </p>
 
                   <div className="flex flex-col sm:flex-row sm:space-x-6 justify-center lg:justify-start items-center text-xs sm:text-sm text-gray-600 mt-2 sm:mt-4 space-y-2 sm:space-y-0">
@@ -1642,8 +1645,10 @@ export default function TradingCourseLanding() {
                   {/* CTA Button */}
                   <Link
                     onClick={() => {
-                      fbq("track", " Enroll Now – Start Your Trading Journey Click");
-                      
+                      fbq(
+                        "track",
+                        " Enroll Now – Start Your Trading Journey Click"
+                      );
                     }}
                     href="https://pelglp.courses.store/691872"
                     className="
