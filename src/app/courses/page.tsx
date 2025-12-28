@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { fbq } from "@/components/fpixel";
+import { fbq } from "@/components/Face";
 import {
   ChevronDown,
   PlayCircle,

@@ -12,8 +12,7 @@ import {
   Target,
   Clock,
 } from "lucide-react";
-import { fbq } from "./fpixel";
-
+import { fbq } from "./Face";
 const TradingCourseSection = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 3,
