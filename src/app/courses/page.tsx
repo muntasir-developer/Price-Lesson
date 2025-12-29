@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { fbq } from "@/components/Face";
+
 import {
   ChevronDown,
   PlayCircle,
@@ -185,69 +185,58 @@ export default function TradingCourseLanding() {
               <Image
                 src="/image/logo.png"
                 alt="Company Logo"
-                width={128} // specify your logo width
-                height={48} // specify your logo height
+                width={128}
+                height={48}
                 className="h-8 sm:h-12 w-auto"
               />
             </Link>
 
-            {/* CTA Button (Mobile: inline, Desktop: right side) */}
+            {/* CTA Button (Mobile) */}
             <Link
               href="https://pelglp.courses.store/691872"
-              onClick={() => fbq("track", "GetStartedClick")}
+              onClick={() => {
+                window.dataLayer?.push({
+                  event: "cta_click",
+                  cta_name: "get_started_mobile",
+                  page: window.location.pathname,
+                });
+              }}
               className="absolute z-50 inline-flex sm:hidden
-              overflow-hidden
-             bg-orange-500
-             text-white right-4 px-4 py-2 rounded-full text-sm font-semibold
-             transition-all duration-300
-             hover:scale-105
-             shadow-lg
-             hover:shadow-[0_0_20px_rgba(16,185,129,0.5),0_0_30px_rgba(37,99,235,0.6)]
-             border border-white/20"
+      overflow-hidden
+      bg-orange-500
+      text-white right-4 px-4 py-2 rounded-full text-sm font-semibold
+      transition-all duration-300
+      hover:scale-105
+      shadow-lg
+      hover:shadow-[0_0_20px_rgba(16,185,129,0.5),0_0_30px_rgba(37,99,235,0.6)]
+      border border-white/20"
             >
-              {/* Shine Effect */}
-              <span
-                className="
-      absolute top-8 left-0 h-[40%] w-[130%]
-      bg-white opacity-50
-      blur-[10px]
-      pointer-events-none
-      animate-diagonal-shine
-      rotate-[22deg]
-    "
-              ></span>
-
+              <span className="absolute top-8 left-0 h-[40%] w-[130%] bg-white opacity-50 blur-[10px] pointer-events-none animate-diagonal-shine rotate-[22deg]"></span>
               <span className="relative z-10">Get Started</span>
             </Link>
 
+            {/* CTA Button (Desktop) */}
             <Link
               href="https://pelglp.courses.store/691872"
-              onClick={() => fbq("track", "GetStartedClick")}
-              className="
-    hidden sm:inline-flex
-    relative overflow-hidden
-    items-center justify-center
-    bg-orange-500
-    text-white px-6 py-3 rounded-full text-base font-semibold
-    transition-all duration-300
-    hover:scale-105
-    shadow-lg 
-    hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_30px_rgba(255,140,0,0.6)]
-    border border-orange-300/40
-  "
+              onClick={() => {
+                window.dataLayer?.push({
+                  event: "cta_click",
+                  cta_name: "get_started_desktop",
+                  page: window.location.pathname,
+                });
+              }}
+              className="hidden sm:inline-flex
+      relative overflow-hidden
+      items-center justify-center
+      bg-orange-500
+      text-white px-6 py-3 rounded-full text-base font-semibold
+      transition-all duration-300
+      hover:scale-105
+      shadow-lg 
+      hover:shadow-[0_0_20px_rgba(255,165,0,0.5),0_0_30px_rgba(255,140,0,0.6)]
+      border border-orange-300/40"
             >
-              {/* Shine Effect */}
-              <span
-                className="
-      absolute top-10 left-0 h-[35%] w-[120%]
-      bg-white opacity-50
-      blur-[12px]
-      pointer-events-none
-      animate-diagonal-shine
-      rotate-[22deg]
-    "
-              ></span>
-
+              <span className="absolute top-10 left-0 h-[35%] w-[120%] bg-white opacity-50 blur-[12px] pointer-events-none animate-diagonal-shine rotate-[22deg]"></span>
               <span className="relative z-10">Get Started</span>
             </Link>
           </div>
@@ -335,41 +324,51 @@ export default function TradingCourseLanding() {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start font-poppins">
                   <button
                     onClick={() => {
-                      fbq("track", "Enroll Course Now Click");
+                      window.dataLayer?.push({
+                        event: "cta_click",
+                        cta_name: "enroll_course_now",
+                        page: window.location.pathname,
+                      });
                       router.push("https://pelglp.courses.store/691872");
                     }}
                     className="
-                        relative overflow-hidden
-                        text-white font-semibold
-                        px-10 sm:px-12 py-4 sm:py-5
-                        rounded-full text-lg sm:text-xl
-                        shadow-lg hover:shadow-xl
-                        transition-all duration-300
-                        hover:scale-[1.04]
-                        flex items-center justify-center
-                        bg-orange-500
-                        z-10
-                      "
+      relative overflow-hidden
+      text-white font-semibold
+      px-10 sm:px-12 py-4 sm:py-5
+      rounded-full text-lg sm:text-xl
+      shadow-lg hover:shadow-xl
+      transition-all duration-300
+      hover:scale-[1.04]
+      flex items-center justify-center
+      bg-orange-500
+      z-10
+    "
                   >
                     {/* Diagonal Shine Effect */}
                     <span
                       className="
-                          absolute top-10 left-0 h-[30%] w-[90%]
-                          bg-white
-                          blur-[20px]
-                          opacity-100
-                          pointer-events-none
-                          animate-diagonal-shine
-                          rotate-[20deg]
-                          z-0
-                        "
+        absolute top-10 left-0 h-[30%] w-[90%]
+        bg-white
+        blur-[20px]
+        opacity-100
+        pointer-events-none
+        animate-diagonal-shine
+        rotate-[20deg]
+        z-0
+      "
                     ></span>
 
                     <span className="relative z-20">Enroll Course Now!</span>
                   </button>
 
                   <button
-                    onClick={() => fbq("track", "WatchDemoClick")}
+                    onClick={() => {
+                      window.dataLayer?.push({
+                        event: "cta_click",
+                        cta_name: "watch_demo",
+                        page: window.location.pathname,
+                      });
+                    }}
                     className="border border-gray-300 hover:border-emerald-400 text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all hover:bg-white/70 backdrop-blur-md shadow-sm"
                   >
                     Watch Demo
@@ -766,7 +765,11 @@ export default function TradingCourseLanding() {
 
                   <button
                     onClick={() => {
-                      fbq("track", "Enroll Now Click");
+                      window.dataLayer?.push({
+                        event: "cta_click",
+                        cta_name: "enroll_now_button",
+                        page: window.location.pathname,
+                      });
                       router.push("https://pelglp.courses.store/691872");
                     }}
                     className="
@@ -1400,7 +1403,11 @@ export default function TradingCourseLanding() {
 
                   <button
                     onClick={() => {
-                      fbq("track", "Enroll Now & Unlock Access Click");
+                      window.dataLayer?.push({
+                        event: "cta_click",
+                        cta_name: "enroll_now_unlock_access",
+                        page: window.location.pathname,
+                      });
                       router.push("https://pelglp.courses.store/691872");
                     }}
                     className="
@@ -1644,13 +1651,14 @@ export default function TradingCourseLanding() {
 
                   {/* CTA Button */}
                   <Link
-                    onClick={() => {
-                      fbq(
-                        "track",
-                        " Enroll Now – Start Your Trading Journey Click"
-                      );
-                    }}
                     href="https://pelglp.courses.store/691872"
+                    onClick={() => {
+                      window.dataLayer?.push({
+                        event: "cta_click",
+                        cta_name: "enroll_now_start_trading",
+                        page: window.location.pathname,
+                      });
+                    }}
                     className="
     relative inline-block px-6 py-3 
     font-bold text-sm text-white rounded-xl

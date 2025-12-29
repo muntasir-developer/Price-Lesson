@@ -3,13 +3,15 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-export default function Fpixel() {
+export default function PageViewTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (typeof window !== "undefined" && typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
-    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "page_view",
+      page_path: pathname,
+    });
   }, [pathname]);
 
   return null;

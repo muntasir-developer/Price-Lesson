@@ -12,7 +12,6 @@ import {
   Target,
   Clock,
 } from "lucide-react";
-import { fbq } from "./Face";
 const TradingCourseSection = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 3,
@@ -300,7 +299,11 @@ const TradingCourseSection = () => {
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:gap-4 lg:gap-6 justify-center items-center px-4">
           <button
             onClick={() => {
-              fbq("track", "EnrollNow");
+              window.dataLayer?.push({
+                event: "cta_click",
+                cta_name: "enroll_now",
+                page: window.location.pathname,
+              });
               router.push("https://pelglp.courses.store/691872");
             }}
             className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
@@ -313,7 +316,13 @@ const TradingCourseSection = () => {
           <a
             href="/brochure.pdf"
             download
-            onClick={() => fbq("track", "DownloadBrochure")}
+            onClick={() => {
+              window.dataLayer?.push({
+                event: "cta_click",
+                cta_name: "download_brochure",
+                page: window.location.pathname,
+              });
+            }}
           >
             <button className="group relative bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
               <Download className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-y-1 transition-transform duration-300" />
@@ -324,8 +333,14 @@ const TradingCourseSection = () => {
 
           <a
             href="tel:+918578064265"
-            onClick={() => fbq("track", "Contact")}
             className="w-full sm:w-auto"
+            onClick={() => {
+              window.dataLayer?.push({
+                event: "cta_click",
+                cta_name: "talk_to_mentor",
+                page: window.location.pathname,
+              });
+            }}
           >
             <button className="group relative bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 flex items-center gap-2 sm:gap-3 justify-center w-full">
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
