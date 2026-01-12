@@ -104,7 +104,7 @@ export default function OrderSuccessPage() {
                   </p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-2xl font-bold text-gray-900">₹2,999</p>
+                  <p className="text-2xl font-bold text-gray-900">₹3101</p>
                 </div>
               </div>
 
